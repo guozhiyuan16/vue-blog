@@ -3,14 +3,44 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-import { Button,LocaleProvider, ConfigProvider ,Menu, Row,Col } from 'ant-design-vue';
-
+//ant-design-vue按需加载
+import { Button,spin, Calendar,Card,LocaleProvider,Layout,Radio,Checkbox,DatePicker,Dropdown,Form,FormModel,Icon,Input,InputNumber,Tree,message,Popconfirm,Menu,Modal,notification,Pagination,Select,Table,TreeSelect,Upload,Col,Row} from 'ant-design-vue';
 Vue.use(Button);
-Vue.use(LocaleProvider);
-Vue.use(ConfigProvider)
+Vue.use(Calendar);
+Vue.use(spin);
+Vue.use(Card);
+Vue.use(Checkbox);
+Vue.use(DatePicker);
+Vue.use(Dropdown);
+Vue.use(Form);
+Vue.use(FormModel);
+Vue.use(Icon);
+Vue.use(Input);
+Vue.use(InputNumber);
+Vue.use(message);
 Vue.use(Menu);
+Vue.use(Modal);
+Vue.use(notification);
+Vue.use(Pagination);
+Vue.use(Select);
+Vue.use(Table);
+Vue.use(TreeSelect);
+Vue.use(Tree);
+Vue.use(Upload);
+Vue.use(Col);
 Vue.use(Row);
-Vue.use(Col)
+Vue.use(Radio);
+Vue.use(Layout);
+Vue.use(Popconfirm)
+Vue.use(LocaleProvider)
+Vue.prototype.$message = message;
+Vue.prototype.$notification = notification;
+Vue.prototype.$info = Modal.info;
+Vue.prototype.$success = Modal.success;
+Vue.prototype.$error = Modal.error;
+Vue.prototype.$warning = Modal.warning;
+Vue.prototype.$confirm = Modal.confirm;
+Vue.prototype.$destroyAll = Modal.destroyAll;
 
 Vue.config.productionTip = false
 

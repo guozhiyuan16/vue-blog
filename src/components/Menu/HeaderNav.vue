@@ -33,11 +33,6 @@ export default {
 
 <style scoped lang="less">
 .nav {
-  height: 64px;
-
-  .ant-menu-item-selected {
-    border-bottom: 2px solid transparent;
-    border-top: 2px solid @primary-color;
-  }
+ 
 }
 </style>
