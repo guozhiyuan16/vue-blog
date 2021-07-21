@@ -4,7 +4,7 @@ import router from './router'
 import store from './store'
 
 //ant-design-vue按需加载
-import { Button,spin, Calendar,Card,LocaleProvider,Layout,Radio,Checkbox,DatePicker,Dropdown,Form,FormModel,Icon,Input,InputNumber,Tree,message,Popconfirm,Menu,Modal,notification,Pagination,Select,Table,TreeSelect,Upload,Col,Row} from 'ant-design-vue';
+import { Button,spin, Calendar,Card,LocaleProvider,Layout,Radio,Checkbox,DatePicker,Dropdown,Form,FormModel,Icon,Input,InputNumber,Tree,message,Popconfirm,Menu,Modal,notification,Pagination,Select,Table,TreeSelect,Upload,Col,Row,Space} from 'ant-design-vue';
 Vue.use(Button);
 Vue.use(Calendar);
 Vue.use(spin);
@@ -33,6 +33,7 @@ Vue.use(Radio);
 Vue.use(Layout);
 Vue.use(Popconfirm)
 Vue.use(LocaleProvider)
+Vue.use(Space)
 Vue.prototype.$message = message;
 Vue.prototype.$notification = notification;
 Vue.prototype.$info = Modal.info;
