@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import "@/assets/index.less"
 
 //ant-design-vue按需加载
 import { Button,spin, Calendar,Card,LocaleProvider,Layout,Radio,Checkbox,DatePicker,Dropdown,Form,FormModel,Icon,Input,InputNumber,Tree,message,Popconfirm,Menu,Modal,notification,Pagination,Select,Table,TreeSelect,Upload,Col,Row,Space} from 'ant-design-vue';
