@@ -80,3 +80,91 @@
 
     }
 }
+
+.app-main{
+    background: #fff;
+    position: relative;
+    padding: 40px 0 0;
+
+    .app-sidebar{
+        border-right: 1px solid #ebedf0;
+        height: calc(100vh - 104px);
+        text-align: center;
+        color: rgba(0,0,0,.65);
+        overflow-y: auto;
+
+        .sider-avatar {
+            width: 132px;
+            height: 132px;
+            border-radius: 50%;
+        }
+
+        h2{
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        h5{
+            font-size: 13px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            color: rgba(0,0,0,.65);
+        }
+
+        .home-pages{
+            padding: 0;
+            width: 214px;
+            line-height: 24px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+
+            li{
+                list-style: none;
+                padding: 0 8px;
+                cursor: pointer;
+
+                a{
+                    vertical-align: top;
+                    padding-left: 5px;
+                    color: inherit;
+                }
+            }
+        }
+
+        .ant-alert{
+            padding: 8px 15px;
+        }
+
+        .article-list{
+            text-align: left;
+            list-style: none;
+            padding-left: 0;
+
+            li{
+                padding: 0 20px;
+
+                a{
+                    display: block;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    font-size: 14px;
+                    line-height: 32px;
+                    color: #8590a6;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .tag-list{
+            overflow: hidden;
+            
+            .ant-tag{
+                margin-bottom: 6px;
+            }
+        }
+
+    }
+}

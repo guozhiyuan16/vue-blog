@@ -4,17 +4,18 @@
       <a-layout-header>
         <header-nav></header-nav>
       </a-layout-header>
-      <a-layout-content :style="{ height: '100%'}"
-        >Content</a-layout-content
-      >
+      <a-layout-content :style="{ height: '100%' }">
+        <app-main></app-main>
+      </a-layout-content>
     </a-layout>
   </div>
 </template>
 
 <script>
-import HeaderNav from "@/components/Menu/HeaderNav";
+import HeaderNav from "@/components/Header/HeaderNav";
+import AppMain from "@/components/AppMain";
 export default {
-  components: { HeaderNav },
+  components: { HeaderNav,AppMain },
 };
 </script>
 
