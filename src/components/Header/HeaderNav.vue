@@ -28,15 +28,15 @@
         </div>
         <div id="page-menu">
           <a-menu v-model="current" mode="horizontal">
-            <a-menu-item key="mail"> <a-icon type="mail" />首页 </a-menu-item>
+            <a-menu-item key="mail"> <a-icon type="home" />首页 </a-menu-item>
             <a-menu-item key="app">
-              <a-icon type="appstore" />归档
+              <a-icon type="edit" />归档
             </a-menu-item>
             <a-menu-item key="kind">
-              <a-icon type="appstore" />分类
+              <a-icon type="folder" />分类
             </a-menu-item>
             <a-menu-item key="about">
-              <a-icon type="appstore" />关于
+              <a-icon type="user" />关于
             </a-menu-item>
           </a-menu>
         </div>

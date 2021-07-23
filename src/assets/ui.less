@@ -1,5 +1,17 @@
 @import 'var.less';
 
+body{
+    position: relative;
+    font-family: Chinese Quote,-apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+    line-height: 2;
+    color: #555;
+}
+
+ul,ol,li{
+    list-style: none;
+    padding: 0;
+}
+
 #page-header {
     
     .ant-menu-horizontal {
@@ -81,7 +93,7 @@
     }
 }
 
-.app-main{
+.app-warper{
     background: #fff;
     position: relative;
     padding: 40px 0 0;
@@ -166,5 +178,96 @@
             }
         }
 
+    }
+
+    .app-main{
+        height: calc(100vh - 104px);
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        box-sizing: border-box;
+        padding-left: 20px;
+        padding-right: 10px;
+
+        .app-home{
+            min-height: 10vh;
+            padding-bottom: 40px;
+            
+
+            .app-home-list{
+                width: calc(100% - 292px);
+
+                .app-home-list-item{
+                    position: relative;
+                    border: 1px solid #ebedf0;
+                    padding: 16px 24px;
+                    margin-bottom: 10px;
+                    -webkit-transition: all .2s linear;
+                    transition: all .2s linear;
+
+                    .title{
+                        color: #394d69;
+                        font-size: 1.4rem;
+                        font-weight: 600;
+                        line-height: 1.2;
+                        cursor: pointer;
+
+                        &:hover{
+                            color: @font-hover;
+                        }
+                    }
+
+                    .posted-time{
+                        font-size: .5em;
+                        padding-left: 20px;
+                    }
+
+                    .article-detail{
+
+                    }
+
+                    .list-item-others{
+                        vertical-align: middle;
+                        margin-top: 10px;
+                        color: rgba(0,0,0,.45);
+                        text-align: left;
+
+                        .anticon{
+                            margin-right: 7px;
+                        }
+                    }
+                }
+            }
+
+            .preview{
+                position: fixed;
+                width: 260px;
+                top: 90px;
+                right: 20px;
+                list-style-type: circle;
+
+                li{
+                    cursor: pointer;
+                    display: block;
+                    -webkit-transition: all .3s ease;
+                    transition: all .3s ease;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    margin-left: -1px;
+                    text-align: left;
+                    line-height: 28px;
+
+                    a{
+                        color: #8590a6;
+                        display: block;
+                    }
+                }
+            }
+
+            .app-pagination{
+                float: right;
+                margin-right: 292px;
+            }
+        }
     }
 }
