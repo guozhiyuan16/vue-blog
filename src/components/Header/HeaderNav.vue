@@ -29,10 +29,10 @@
         </div>
         <div id="page-menu">
           <a-menu v-model="current" mode="horizontal">
-            <a-menu-item key="mail"> <a-icon type="home" />首页 </a-menu-item>
-            <a-menu-item key="app"> <a-icon type="edit" />归档 </a-menu-item>
-            <a-menu-item key="kind"> <a-icon type="folder" />分类 </a-menu-item>
-            <a-menu-item key="about"> <a-icon type="user" />关于 </a-menu-item>
+            <a-menu-item key="home" @click="showDetail('/')"> <a-icon type="home" />首页 </a-menu-item>
+            <a-menu-item key="archives" @click="showDetail('archives')"> <a-icon type="edit" />归档 </a-menu-item>
+            <a-menu-item key="categories" @click="showDetail('categories')"> <a-icon type="folder" />分类 </a-menu-item>
+            <a-menu-item key="about" @click="showDetail('about')"> <a-icon type="user" />关于 </a-menu-item>
           </a-menu>
         </div>
       </a-col>
@@ -98,7 +98,7 @@
 export default {
   data() {
     return {
-      current: ["mail"],
+      current: ["home"],
       visible: false,
     };
   },
@@ -106,6 +106,10 @@ export default {
     this.form = this.$form.createForm(this, { name: 'normal_login' });
   },
   methods: {
+    showDetail(path){
+      console.log(path);
+      this.$router.push(path);
+    },
     showModal() {
       this.visible = true;
     },

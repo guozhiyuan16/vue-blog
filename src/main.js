@@ -5,12 +5,11 @@ import store from './store'
 import "@/assets/index.less"
 
 //ant-design-vue按需加载
-import { Button,spin, Calendar,Card,LocaleProvider,Layout,Radio,Checkbox,DatePicker,Dropdown,Form,FormModel,Icon,Input,InputNumber,Tree,message,Popconfirm,Menu,Modal,notification,Pagination,Select,Table,TreeSelect,Upload,Col,Row,Alert,Divider,Tag} from 'ant-design-vue';
+import { Button,spin, Calendar,Card,LocaleProvider,Layout,DatePicker,Dropdown,Form,FormModel,Icon,Input,InputNumber,message,Popconfirm,Menu,Modal,notification,Pagination,Select,Table,TreeSelect,Upload,Col,Row,Alert,Divider,Tag,Badge,Timeline} from 'ant-design-vue';
 Vue.use(Button);
 Vue.use(Calendar);
 Vue.use(spin);
 Vue.use(Card);
-Vue.use(Checkbox);
 Vue.use(DatePicker);
 Vue.use(Dropdown);
 Vue.use(Form);
@@ -26,11 +25,9 @@ Vue.use(Pagination);
 Vue.use(Select);
 Vue.use(Table);
 Vue.use(TreeSelect);
-Vue.use(Tree);
 Vue.use(Upload);
 Vue.use(Col);
 Vue.use(Row);
-Vue.use(Radio);
 
 Vue.use(Layout);
 Vue.use(Popconfirm)
@@ -38,6 +35,8 @@ Vue.use(LocaleProvider)
 Vue.use(Alert)
 Vue.use(Divider)
 Vue.use(Tag)
+Vue.use(Badge)
+Vue.use(Timeline)
 
 Vue.prototype.$message = message;
 Vue.prototype.$notification = notification;
