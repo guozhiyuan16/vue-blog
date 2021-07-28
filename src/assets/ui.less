@@ -294,7 +294,99 @@ ul,ol,li{
         }
 
         .app-about{
+            padding-right: 20px;
 
+            .about-list{
+                list-style: circle;
+                margin-left: 20px;
+
+                >li {
+                    list-style: circle;
+                }
+
+                ul{
+                    list-style: circle;
+                    margin-left: 20px;
+
+                    li{
+                        list-style: circle;
+                    }
+                }
+            }
+        }
+
+        #discuss{
+
+            .discuss-header{
+                padding: 20px 0;
+                color: #555;
+                font-size: 16px;
+    
+                .discuss-count{
+                    color: #6190e8;
+                    border-bottom: 1px dotted #6190e8;
+                    margin-right: 5px;
+                }
+    
+                .discuss-user{
+                    float: right;
+                    cursor: pointer;
+                }
+            }
+    
+            .ant-comment{
+             
+                .ant-comment-inner{
+                    display: flex;
+                    padding:6px 0;
+
+                    .ant-comment-avatar{
+                        position: relative;
+                        -ms-flex-negative: 0;
+                        flex-shrink: 0;
+                        margin-right: 12px;
+                        cursor: pointer;
+                    }
+
+                    .ant-comment-content{
+                        position: relative;
+                        -ms-flex: 1 1 auto;
+                        flex: 1 1 auto;
+                        min-width: 1px;
+                        font-size: 14px;
+                        word-wrap: break-word;
+
+                        .controls{
+                            float: right;
+
+                            .controls-tip{
+                                margin-right: 20px;
+                                color: #6190e8;
+                            }
+
+                            .controls-tip-icon{
+                                color: #6190e8;
+                                margin-right: 4px;
+                            }
+                        }
+                    }
+                }
+            }
+    
+            .discuss-list{
+    
+
+                .ant-commit-inner{
+
+                   
+                }
+
+                .ant-comment-nested{
+
+                }
+            }
         }
     }
+
+    
 }

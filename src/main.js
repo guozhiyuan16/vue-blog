@@ -5,7 +5,7 @@ import store from './store'
 import "@/assets/index.less"
 
 //ant-design-vue按需加载
-import { Button,spin, Calendar,Card,LocaleProvider,Layout,DatePicker,Dropdown,Form,FormModel,Icon,Input,InputNumber,message,Popconfirm,Menu,Modal,notification,Pagination,Select,Table,TreeSelect,Upload,Col,Row,Alert,Divider,Tag,Badge,Timeline} from 'ant-design-vue';
+import { Button,spin, Calendar,Card,LocaleProvider,Layout,DatePicker,Dropdown,Form,FormModel,Icon,Input,InputNumber,message,Popconfirm,Menu,Modal,notification,Pagination,Select,Table,TreeSelect,Upload,Col,Row,Alert,Divider,Tag,Badge,Timeline,Avatar,Rate} from 'ant-design-vue';
 Vue.use(Button);
 Vue.use(Calendar);
 Vue.use(spin);
@@ -37,6 +37,8 @@ Vue.use(Divider)
 Vue.use(Tag)
 Vue.use(Badge)
 Vue.use(Timeline)
+Vue.use(Avatar)
+Vue.use(Rate)
 
 Vue.prototype.$message = message;
 Vue.prototype.$notification = notification;
