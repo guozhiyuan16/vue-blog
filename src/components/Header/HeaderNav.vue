@@ -22,7 +22,7 @@
             type="primary"
             ghost
             :style="{ marginRight: '20px' }"
-            @click="showModal"
+            @click="login"
             >登录
           </a-button>
           <a-button size="small" type="danger" ghost>注册</a-button>
@@ -37,7 +37,15 @@
         </div>
       </a-col>
     </a-row>
-    <a-modal v-model="visible" title="Login" :footer="null" @ok="handleOk">
+    <modal 
+      v-if="modalVisible"
+      ref="loginOrRegister"
+      :rules="rules"
+      :modalTitle="modalTitle"
+      @console_data="parentEvent"
+    />
+
+    <!-- <a-modal v-model="visible" title="Login" :footer="null" @ok="handleOk">
       <a-form
         :form="form"
         class="login-form"
@@ -77,11 +85,11 @@
         <a-button type="primary" block>
           login
         </a-button>
-        <!-- <a-button block icon="github" :style="{marginTop:'10px'}">
+        <a-button block icon="github" :style="{marginTop:'10px'}">
           github login
-        </a-button> -->
+        </a-button>
       </a-form>
-    </a-modal>
+    </a-modal> -->
   </div>
 </template>
 
@@ -95,8 +103,12 @@ export default {
     return {
       current: ["home"],
       formItemLayout,
-      visible: false,
-      form: this.$form.createForm(this, { }),
+      modalVisible: false,
+      modalTitle: 'Login',
+      form: {
+        username:'',
+        password:''
+      },
       options: [// model框的选项
         [{ title:'用户名',type:'text', name:'username',placeholder:'Username' }],
         [{ title:'密码',type:'text', name:'password',placeholder:'Password' }],
@@ -116,8 +128,12 @@ export default {
       console.log(path);
       this.$router.push(path);
     },
-    showModal() {
-      this.visible = true;
+    login() {
+      this.modalVisible = true;
+      this.modalTitle = 'Login';
+      this.$nextTick(()=>{
+        this.$refs.loginOrRegister.showModal(this.options)
+      })
     },
     handleOk(e) {
       console.log(e);
