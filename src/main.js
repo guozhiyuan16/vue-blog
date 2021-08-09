@@ -2,7 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import "@/assets/index.less"
+import './components/global'; // 全局组件注册
+import '@/assets/index.less'
 
 //ant-design-vue按需加载
 import { Button,spin, Calendar,Card,LocaleProvider,Layout,DatePicker,Dropdown,Form,FormModel,Icon,Input,InputNumber,message,Popconfirm,Menu,Modal,notification,Pagination,Select,Table,TreeSelect,Upload,Col,Row,Alert,Divider,Tag,Badge,Timeline,Avatar,Rate} from 'ant-design-vue';

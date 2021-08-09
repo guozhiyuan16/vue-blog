@@ -39,71 +39,77 @@
     </a-row>
     <a-modal v-model="visible" title="Login" :footer="null" @ok="handleOk">
       <a-form
-        id="components-form-demo-normal-login"
         :form="form"
         class="login-form"
         @submit="handleSubmit"
+        :label-col="formItemLayout.labelCol"
+        :wrapper-col="formItemLayout.wrapperCol"
       >
-        <a-form-item>
+        <a-form-item label="用户名">
           <a-input
             v-decorator="[
               'userName',
               {
                 rules: [
-                  { required: true, message: 'Please input your username!' },
+                  { required: true, message: 'Username is required' },
                 ],
               },
             ]"
-            placeholder="Username"
+            placeholder="请输入用户名"
           >
-            <a-icon
-              slot="prefix"
-              type="user"
-              style="color: rgba(0, 0, 0, 0.25)"
-            />
           </a-input>
         </a-form-item>
-        <a-form-item>
+        <a-form-item label="密码">
           <a-input
             v-decorator="[
               'password',
               {
                 rules: [
-                  { required: true, message: 'Please input your Password!' },
+                  { required: true, message: 'Password is required' },
                 ],
               },
             ]"
             type="password"
             placeholder="Password"
           >
-            <a-icon
-              slot="prefix"
-              type="lock"
-              style="color: rgba(0, 0, 0, 0.25)"
-            />
           </a-input>
         </a-form-item>
         <a-button type="primary" block>
           login
         </a-button>
-        <a-button block icon="github" :style="{marginTop:'10px'}">
+        <!-- <a-button block icon="github" :style="{marginTop:'10px'}">
           github login
-        </a-button>
+        </a-button> -->
       </a-form>
     </a-modal>
   </div>
 </template>
 
 <script>
+const formItemLayout = {
+  labelCol: { span:6 },
+  wrapperCol: { span:18 }
+}
 export default {
   data() {
     return {
       current: ["home"],
+      formItemLayout,
       visible: false,
+      form: this.$form.createForm(this, { }),
+      options: [// model框的选项
+        [{ title:'用户名',type:'text', name:'username',placeholder:'Username' }],
+        [{ title:'密码',type:'text', name:'password',placeholder:'Password' }],
+      ], 
+      rules: { // 校验规则
+          username: [
+            { required: true, message: 'Username is required' ,trigger:'blur'}
+          ],
+          password: [
+            { required: true, message: 'Password is required' ,trigger:'blur'}
+          ]
+      },
     };
-  },
-  beforeCreate() {
-    this.form = this.$form.createForm(this, { name: 'normal_login' });
   },
   methods: {
     showDetail(path){
