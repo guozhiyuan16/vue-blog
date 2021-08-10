@@ -17,15 +17,8 @@
           />
         </div>
         <div id="page-operation">
-          <a-button
-            size="small"
-            type="primary"
-            ghost
-            :style="{ marginRight: '20px' }"
-            @click="login"
-            >登录
-          </a-button>
-          <a-button size="small" type="danger" ghost>注册</a-button>
+          <a-button size="small" type="primary" ghost :style="{ marginRight: '20px' }" @click="login">登录</a-button>
+          <a-button size="small" type="danger" ghost @click="register">注册</a-button>
         </div>
         <div id="page-menu">
           <a-menu v-model="current" mode="horizontal">
@@ -42,85 +35,68 @@
       ref="loginOrRegister"
       :rules="rules"
       :modalTitle="modalTitle"
+      :type="type"
       @console_data="parentEvent"
     />
-
-    <!-- <a-modal v-model="visible" title="Login" :footer="null" @ok="handleOk">
-      <a-form
-        :form="form"
-        class="login-form"
-        @submit="handleSubmit"
-        :label-col="formItemLayout.labelCol"
-        :wrapper-col="formItemLayout.wrapperCol"
-      >
-        <a-form-item label="用户名">
-          <a-input
-            v-decorator="[
-              'userName',
-              {
-                rules: [
-                  { required: true, message: 'Username is required' },
-                ],
-              },
-            ]"
-            placeholder="请输入用户名"
-          >
-          </a-input>
-        </a-form-item>
-        <a-form-item label="密码">
-          <a-input
-            v-decorator="[
-              'password',
-              {
-                rules: [
-                  { required: true, message: 'Password is required' },
-                ],
-              },
-            ]"
-            type="password"
-            placeholder="Password"
-          >
-          </a-input>
-        </a-form-item>
-        <a-button type="primary" block>
-          login
-        </a-button>
-        <a-button block icon="github" :style="{marginTop:'10px'}">
-          github login
-        </a-button>
-      </a-form>
-    </a-modal> -->
   </div>
 </template>
 
 <script>
-const formItemLayout = {
-  labelCol: { span:6 },
-  wrapperCol: { span:18 }
+// model框的选项
+const loginOptions = [
+  { title:'用户名',type:'text', name:'username',placeholder:'请输入用户名' },
+  { title:'密码',type:'text', name:'password',placeholder:'请输入密码' },
+]
+const registerOptions = [
+  ...loginOptions,
+  { title:'确认密码',type:'text', name:'confirm',placeholder:'确认密码' },
+  { title:'邮箱',type:'text', name:'email',placeholder:'请输入您的邮箱' },
+]
+// 选项校验规则
+const loginRules = { 
+  username: [
+    { required: true, message: 'Username is required' , trigger:'blur'},
+    { min: 6, max:20, message: '用户名必须是6到20字符' , trigger:'blur' },
+  ],
+  password: [{ required: true, message: 'Password is required' ,trigger:'blur'}]
+}
+const registerRules = { 
+  username: [
+    { required: true, message: 'Username is required' , trigger:'blur'},
+    { min: 6, max:20, message: '用户名必须是6到20字符' , trigger:'blur' },
+  ],
+  password: [{ required: true, message: 'Password is required' ,trigger:'blur'}],
+  confirm: [
+    { required: true, message: 'Password is required' ,trigger:'blur'},
+    { 
+      validator( rule,value,callback ){
+        if(value == ''){
+          callback(new Error('Password is required'));
+        }else if(value!= this.$refs.loginOrRegister.form.password){
+          callback(new Error('Two passwords that you enter is inconsistent'));
+        }
+      },
+      trigger:"change"
+    }
+  ],
+  email: [
+    { required: true, message: 'Email is required', trigger:'blur'},
+    { required: true, pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, message: 'The input is not valid E-mail' ,trigger:'blur'}
+  ]
 }
 export default {
   data() {
     return {
       current: ["home"],
-      formItemLayout,
       modalVisible: false,
-      modalTitle: 'Login',
+      modalTitle: 'login',
+      type:'login',
       form: {
         username:'',
         password:''
       },
-      options: [// model框的选项
-        [{ title:'用户名',type:'text', name:'username',placeholder:'Username' }],
-        [{ title:'密码',type:'text', name:'password',placeholder:'Password' }],
-      ], 
-      rules: { // 校验规则
-          username: [
-            { required: true, message: 'Username is required' ,trigger:'blur'}
-          ],
-          password: [
-            { required: true, message: 'Password is required' ,trigger:'blur'}
-          ]
-      },
+      options: '' , 
+      rules: ''
     };
   },
   methods: {
@@ -130,22 +106,32 @@ export default {
     },
     login() {
       this.modalVisible = true;
-      this.modalTitle = 'Login';
+      this.modalTitle = 'login';
+      this.type = "login";
+      this.options = loginOptions;
+      this.rules = loginRules;
       this.$nextTick(()=>{
         this.$refs.loginOrRegister.showModal(this.options)
       })
     },
-    handleOk(e) {
-      console.log(e);
-      this.visible = false;
+    register(){
+      this.modalVisible = true;
+      this.modalTitle = 'register';
+      this.type = "register";
+      this.options = registerOptions;
+      this.rules = registerRules;
+      this.$nextTick(()=>{
+        this.$refs.loginOrRegister.showModal(this.options)
+      })
     },
-    handleSubmit(e) {
-      e.preventDefault();
-      this.form.validateFields((err, values) => {
-        if (!err) {
-          console.log('Received values of form: ', values);
-        }
-      });
+    parentEvent(form){
+      var newForm = JSON.parse(JSON.stringify(form))
+      console.log('newForm',newForm);
+      if(this.type=='login'){
+        console.log('登录')
+      }else{
+        console.log('注册')
+      }
     },
   },
 };

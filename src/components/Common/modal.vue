@@ -4,7 +4,7 @@
             v-model="visible"
             :title="modalTitle"
             :destoryOnClose= true
-            :fotter= null
+            :footer= null
         >
             <a-form-model
                 :model="form"
@@ -16,12 +16,20 @@
                 :rules="rules"
             >
                 <template v-for="(item,index) in options" >
-                    <a-from-model-item :label="item.title" :key="index">
+                    <a-form-model-item :label="item.title" :prop="item.name" :key="index">
                         <a-input 
                             v-model="form[item.name]"
                             :placeholder="item.placeholder || '请输入' "
                         />
-                    </a-from-model-item>
+                    </a-form-model-item>
+                </template>
+                <template v-if="type=='login'">
+                    <a-button type="primary" block @click="onSubmit">login</a-button>
+                    <a-button block icon="github" :style="{marginTop:'10px'}">github login</a-button>
+                </template>
+                <template v-else-if="type=='register'">
+                    <a-button type="primary" block @click="onSubmit">register</a-button>
+                    <a-button block icon="github" :style="{marginTop:'10px'}">github login</a-button>
                 </template>
             </a-form-model>
         </a-modal>
@@ -29,11 +37,11 @@
 </template>
 <script>
 export default {
-    props:['modalTitle','rules'],
+    props:['modalTitle','rules','type'],
     data(){
         return {
-            labelCol: { span: 4 },
-            wrapperCol: { span: 14 },
+            labelCol: { span: 6 },
+            wrapperCol: { span: 18 },
             visible: false,
             form:{},
             options:''
@@ -42,8 +50,23 @@ export default {
     methods:{
         showModal(options){
             this.visible = true;
-            console.log(options);
             this.options = options;
+        },
+        handleCancel(){
+            this.visible = false;
+        },
+        onSubmit(){
+            this.$refs.ruleForm.validate((valid) => {
+                if (valid) {
+                    this.$emit('console_data',this.form)
+                } else {
+                    console.log("error submit!!");
+                    return false;
+                }
+            });
+        },
+        resetForm(){
+            this.$refs.ruleForm.resetFields();
         }
     }
 }
