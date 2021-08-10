@@ -56,6 +56,7 @@ export default {
             this.visible = false;
         },
         onSubmit(){
+            console.log('submit');
             this.$refs.ruleForm.validate((valid) => {
                 if (valid) {
                     this.$emit('console_data',this.form)

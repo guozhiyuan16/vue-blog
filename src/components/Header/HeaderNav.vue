@@ -58,14 +58,14 @@ const registerOptions = [
 const loginRules = { 
   username: [
     { required: true, message: 'Username is required' , trigger:'blur'},
-    { min: 6, max:20, message: '用户名必须是6到20字符' , trigger:'blur' },
+    // { min: 6, max:20, message: '用户名必须是6到20字符' , trigger:'blur' },
   ],
   password: [{ required: true, message: 'Password is required' ,trigger:'blur'}]
 }
 const registerRules = { 
   username: [
     { required: true, message: 'Username is required' , trigger:'blur'},
-    { min: 6, max:20, message: '用户名必须是6到20字符' , trigger:'blur' },
+    // { min: 6, max:20, message: '用户名必须是6到20字符' , trigger:'blur' },
   ],
   password: [{ required: true, message: 'Password is required' ,trigger:'blur'}],
   confirm: [
@@ -127,6 +127,7 @@ export default {
       })
     },
     parentEvent(form){
+      console.log(this.type);
       var newForm = JSON.parse(JSON.stringify(form))
       console.log('newForm',newForm);
       if(this.type=='login'){
@@ -134,6 +135,7 @@ export default {
           console.log(res)
         })
       }else{
+        newForm.delete('confirm');
         api.register(newForm).then(res => {
           console.log(res)
         })
