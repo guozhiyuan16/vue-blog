@@ -42,6 +42,8 @@
 </template>
 
 <script>
+import api from '@/api/api'
+
 // model框的选项
 const loginOptions = [
   { title:'用户名',type:'text', name:'username',placeholder:'请输入用户名' },
@@ -128,9 +130,13 @@ export default {
       var newForm = JSON.parse(JSON.stringify(form))
       console.log('newForm',newForm);
       if(this.type=='login'){
-        console.log('登录')
+        api.login(newForm).then(res => {
+          console.log(res)
+        })
       }else{
-        console.log('注册')
+        api.register(newForm).then(res => {
+          console.log(res)
+        })
       }
     },
   },
