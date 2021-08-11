@@ -58,6 +58,7 @@ export default {
         onSubmit(){
             console.log('submit');
             this.$refs.ruleForm.validate((valid) => {
+                console.log(valid);
                 if (valid) {
                     this.$emit('console_data',this.form)
                 } else {

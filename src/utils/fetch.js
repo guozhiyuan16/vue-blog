@@ -7,7 +7,6 @@ import { API_BASE_URL } from '@/config'
 
 const service = axios.create({
     baseURL: API_BASE_URL,
-    // withCredentials: true,
     timeout: 10000
 })
 
