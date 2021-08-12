@@ -6,7 +6,7 @@ import './components/global'; // 全局组件注册
 import '@/assets/index.less'
 
 //ant-design-vue按需加载
-import { Button,spin, Calendar,Card,ConfigProvider,Layout,DatePicker,Dropdown,Form,FormModel,Icon,Input,InputNumber,message,Popconfirm,Menu,Modal,notification,Pagination,Select,Table,TreeSelect,Upload,Col,Row,Alert,Divider,Tag,Badge,Timeline,Avatar,Rate,Comment,List} from 'ant-design-vue';
+import { Button,spin, Calendar,Card,ConfigProvider,Layout,DatePicker,Dropdown,Form,FormModel,Icon,Input,InputNumber,message,Popconfirm,Menu,Modal,notification,Pagination,Select,Table,TreeSelect,Upload,Col,Row,Alert,Divider,Tag,Badge,Timeline,Avatar,Rate,Comment,List,Popover,Tooltip} from 'ant-design-vue';
 Vue.use(Button);
 Vue.use(Calendar);
 Vue.use(spin);
@@ -42,6 +42,8 @@ Vue.use(Avatar)
 Vue.use(Rate)
 Vue.use(Comment)
 Vue.use(List)
+Vue.use(Popover)
+Vue.use(Tooltip)
 
 Vue.prototype.$message = message;
 Vue.prototype.$notification = notification;

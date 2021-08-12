@@ -351,8 +351,41 @@ ul,ol,li{
     
             .discuss-list{
     
+                .ant-comment-content{
 
-                
+                    .icon-delete{
+                        color: red;;
+                        vertical-align: middle;
+                        cursor: pointer;
+                        _display: none;
+                    }   
+                    
+                    &:hover .icon-delete{
+                        _display: block;
+                    }
+                }
+
+                .github-info{
+                    margin-left: 10px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+
+                .user-info{
+                    
+                    i{
+                        display: block;
+                    }
+                }
+
+                .reply-form{
+                    overflow: hidden;
+                    .reply-form-controls{
+                        float: right;
+                        padding: 10px 0 ;
+                    }
+                }
             }
         }
     }
