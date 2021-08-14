@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 
 // Layout
 import BasicLayout from '@/layouts/BasicLayout';
+import ManageBascLayout from '@/views/manage';
 
 Vue.use(VueRouter)
 
@@ -35,12 +36,27 @@ const routes = [
     ]
   },
   {
-    path: '/manage',
-    name: 'manage',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '@/views/manage.vue')
+    path: '/admin',
+    name: 'admin',
+    component: ManageBascLayout,
+    children: [
+      {
+        path:'',
+        component: resolve => require(['@/views/admin/home']),
+      },
+      {
+        path:'manager',
+        component: resolve => require(['@/views/admin/manager']),
+      },
+      {
+        path:'add',
+        component: resolve => require(['@/views/admin/add']),
+      },
+      {
+        path:'user',
+        component: resolve => require(['@/views/admin/user']),
+      }
+    ]
   }
 ]
 

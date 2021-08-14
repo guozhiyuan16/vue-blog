@@ -26,7 +26,7 @@
                   <a href="javascript:;" @click="upload">导入文章</a>
                 </a-menu-item>
                 <a-menu-item v-if="role==1">
-                  <a href="javascript:;">后台管理</a>
+                  <a href="javascript:;" @click="manage">后台管理</a>
                 </a-menu-item>
                 <a-menu-item>
                   <a href="javascript:;">退出登录</a>
@@ -202,6 +202,9 @@ export default {
     },
     register(){
       this.registerVisible = true;
+    },
+    manage(){
+      this.$router.push('/manage')
     },
     upload(){
       this.uploadVisible = true;
