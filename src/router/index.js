@@ -3,14 +3,13 @@ import VueRouter from 'vue-router'
 
 // Layout
 import BasicLayout from '@/layouts/BasicLayout';
-import ManageBascLayout from '@/views/manage';
+import AdminLayout from '@/layouts/AdminLayout';
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '',
-    name: 'home',
     component: BasicLayout,
     children: [
       {
@@ -37,24 +36,23 @@ const routes = [
   },
   {
     path: '/admin',
-    name: 'admin',
-    component: ManageBascLayout,
+    component: AdminLayout,
     children: [
       {
         path:'',
-        component: resolve => require(['@/views/admin/home']),
+        component: resolve => require(['@/views/admin/home'],resolve),
       },
       {
-        path:'manager',
-        component: resolve => require(['@/views/admin/manager']),
+        path:'/article/manager',
+        component: resolve => require(['@/views/admin/manager'],resolve),
       },
       {
-        path:'add',
-        component: resolve => require(['@/views/admin/add']),
+        path:'/article/add',
+        component: resolve => require(['@/views/admin/add'],resolve),
       },
       {
-        path:'user',
-        component: resolve => require(['@/views/admin/user']),
+        path:'/user',
+        component: resolve => require(['@/views/admin/user'],resolve),
       }
     ]
   }
