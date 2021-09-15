@@ -8,7 +8,7 @@
         </a>
         <a-menu slot="overlay">
           <a-menu-item>
-            <a href="javascript:;">返回主页</a>
+            <a href="javascript:;" @click="backHome">返回主页</a>
           </a-menu-item>
           <a-menu-item>
             <a href="javascript:;">退出登录</a>
@@ -27,11 +27,11 @@
           <a-menu-item key="sub1" @click="showDetail('/admin')"><a-icon type="user" />首页 </a-menu-item>
           <a-sub-menu key="sub2">
             <span slot="title"><a-icon type="laptop" />文章</span>
-            <a-menu-item key="5" @click="showDetail('/admin/manager')">
+            <a-menu-item key="5" @click="showDetail('/admin/article/manager')">
               <a-icon type="folder" />
               管理
             </a-menu-item>
-            <a-menu-item key="6" @click="showDetail('/admin/add')">
+            <a-menu-item key="6" @click="showDetail('/admin/article/add')">
               <a-icon type="edit" />
               新增
             </a-menu-item>
@@ -64,6 +64,9 @@ export default {
   methods:{
     showDetail(path){
       this.$router.push(path)
+    },
+    backHome(){
+      this.$router.push('/')
     }
   }
 };

@@ -9,28 +9,28 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '',
+    path: '/',
     component: BasicLayout,
     children: [
       {
         path:'',
         component: resolve => require(['@/views/home/home'],resolve),
-        name:'home'
+        // name:'home'
       },
       {
         path:'archives',
         component: resolve => require(['@/views/home/archives'],resolve),
-        name:'archives'
+        // name:'archives'
       },
       {
         path:'categories',
         component: resolve => require(['@/views/home/categories'],resolve),
-        name:'categories'
+        // name:'categories'
       },
       {
         path:'about',
         component: resolve => require(['@/views/home/about'],resolve),
-        name:'about'
+        // name:'about'
       }
     ]
   },
@@ -43,15 +43,15 @@ const routes = [
         component: resolve => require(['@/views/admin/home'],resolve),
       },
       {
-        path:'/article/manager',
+        path:'article/manager',
         component: resolve => require(['@/views/admin/manager'],resolve),
       },
       {
-        path:'/article/add',
+        path:'article/add',
         component: resolve => require(['@/views/admin/add'],resolve),
       },
       {
-        path:'/user',
+        path:'user',
         component: resolve => require(['@/views/admin/user'],resolve),
       }
     ]

@@ -20,7 +20,7 @@
           <template v-if="isLogin">
 
             <a-dropdown placement="bottomCenter">
-              <a-avatar :size="large" icon="user" class="ant-dropdown-link" @click="e => e.preventDefault()" />
+              <a-avatar icon="user" class="ant-dropdown-link" @click="e => e.preventDefault()" />
               <a-menu slot="overlay">
                 <a-menu-item v-if="role==1">
                   <a href="javascript:;" @click="upload">导入文章</a>
@@ -204,7 +204,7 @@ export default {
       this.registerVisible = true;
     },
     manage(){
-      this.$router.push('/manage')
+      this.$router.push('/admin')
     },
     upload(){
       this.uploadVisible = true;
