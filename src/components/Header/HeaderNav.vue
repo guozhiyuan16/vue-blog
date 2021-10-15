@@ -18,7 +18,6 @@
         </div>
         <div id="page-operation">
           <template v-if="isLogin">
-
             <a-dropdown placement="bottomCenter">
               <a-avatar icon="user" class="ant-dropdown-link" @click="e => e.preventDefault()" />
               <a-menu slot="overlay">
