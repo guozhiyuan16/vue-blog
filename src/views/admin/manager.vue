@@ -81,7 +81,7 @@
           <a-button type="primary" v-show="batchSwitch" size="small" :disabled="!batchAction" :style="{marginRight:'8px'}">导出选中项</a-button>
           <a-button type="danger" v-show="batchSwitch" size="small" :disabled="!batchAction" >批量删除</a-button>
         </span>
-        <template slot="pagination">xxx</template>
+        <template slot="pagination"></template>
       </a-table>
     </div>
   </div>
