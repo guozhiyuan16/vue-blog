@@ -9,19 +9,19 @@
     >
       <a-form-model-item label="姓名">
         <a-input
-          v-model="formInline.keyword"
+          v-model="formInline.username"
           placeholder="请输入姓名"
           :style="{ width: '200px' }"
         />
       </a-form-model-item>
       <a-form-model-item label="用户类型">
-        <a-select v-model="formInline.tag" :style="{ width: '200px' }">
-          <a-select-option value="Vue"> Vue </a-select-option>
-          <a-select-option value="React"> React </a-select-option>
+        <a-select v-model="formInline.type" :style="{ width: '200px' }">
+          <a-select-option value="1"> github 用户 </a-select-option>
+          <a-select-option value="0"> 站内用户 </a-select-option>
         </a-select>
       </a-form-model-item>
       <a-form-model-item label="创建日期">
-       <a-range-picker>
+       <a-range-picker @change="onChange">
         </a-range-picker>
       </a-form-model-item>
       <a-form-model-item>
@@ -36,11 +36,11 @@
         @change="tableChange"
       >
         <span slot="name" slot-scope="text">{{ text }}</span>
-        <span slot="notice" slot-scope="text">
-          <a-switch :checked=" text == 0 ? false: true " @change="changeNotice" />
+        <span slot="notice" slot-scope="text,record">
+          <a-switch :checked=" text == 0 ? false: true " @change="changeNotice(record.notice)" />
         </span>
-        <span slot="forbidden" slot-scope="text">
-          <a-switch :checked=" text == 0 ? false: true " @change="changeForbidden" />
+        <span slot="forbidden" slot-scope="text,record">
+          <a-switch :checked=" text == 0 ? false: true " @change="changeForbidden(record.forbidden)" />
         </span>
         <span slot="type" slot-scope="text">
           <a-tag
@@ -120,7 +120,7 @@ const data = [
     createAt:"2021-10-13 15:52:05"
   },
   {
-    key: "2",
+    key: "3",
     name: "BBBBrown",
     email: "12@qq.com",
     notice: 0,
@@ -138,9 +138,10 @@ export default {
       labelCol: { span: 4 },
       wrapperCol: { span: 14 },
       formInline: {
-        keyword: "",
-        tag: "",
-        category: "",
+        username: "",
+        type: "",
+        startTime: "",
+        endTime:""
       },
       data,
       columns,
@@ -165,17 +166,22 @@ export default {
     del(info) {
       console.log(info);
     },
-    changeForbidden(checked) {
-      console.log(`a-switch to forbidden ${checked}`);
+    changeForbidden(info) {
+      console.log(info)
     },
-    changeNotice(checked) {
-      console.log(`a-switch notice to ${checked}`);
+    changeNotice(info) {
+      console.log(info)
     },
     tableChange(e){
       const {current,pageSize} = e;
       this.pagination.current = current;
       this.pagination.pageSize = pageSize;
       this.getTableList();
+    },
+    // 时间发生变化
+    onChange(date, dateString) {
+      this.formInline.startTime = data;
+      this.formInline.endTime = dateString;
     },
   },
 };
