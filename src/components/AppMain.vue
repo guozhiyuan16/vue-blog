@@ -12,12 +12,14 @@
           <h5 class="sub-title">学而知不足</h5>
           <ul class="home-pages">
             <li>
-              <a-button :size="'small'" icon="github" class="homepage-icon">
+              <a-icon type="github" class="homepage-icon"/>
+              <a-button type="link" :size="'small'">
                 github
               </a-button>
             </li>
             <li>
-              <a-button :size="'small'" icon="search" class="homepage-icon">
+              <a-icon type="github" class="homepage-icon"/>
+              <a-button type="link"  :size="'small'">
                 juejin
               </a-button>
             </li>

@@ -40,6 +40,16 @@ export default {
     .ant-layout-content {
       background: #fff;
     }
+
+    .ant-layout-footer{
+      position: absolute;
+      bottom:0;
+      left: 0;
+      right: 0;
+      text-align: center;
+      background-color: #fff;
+      border-top:1px solid #ebedf0;
+    }
   }
 }
 </style>

@@ -124,30 +124,32 @@ ul,ol,li{
             color: rgba(0,0,0,.65);
         }
 
-        .home-pages{
+        .home-pages {
             padding: 0;
             width: 214px;
             line-height: 24px;
             margin: 0 auto;
             display: flex;
             justify-content: center;
-
-            li{
-                list-style: none;
-                padding: 0 8px;
-                cursor: pointer;
-
-                .homepage-icon{
-                    border: none;
-                }
-
-                a{
-                    vertical-align: top;
-                    padding-left: 5px;
-                    color: inherit;
-                }
+            .homepage-icon {
+              width: 16px;
+              height: 16px;
+              font-size: 16px;
             }
-        }
+            li {
+              padding: 0 8px;
+              cursor: pointer;
+              a {
+                vertical-align: top;
+                padding-left: 5px;
+                color: inherit;
+              }
+            }
+            li:hover {
+              border-radius: 4px;
+              background: #eee;
+            }
+          }
 
         .ant-alert{
             padding: 8px 15px;
@@ -171,17 +173,26 @@ ul,ol,li{
                     color: #8590a6;
                     cursor: pointer;
                 }
+
+                &:hover{
+                    background: #f0f2f5;
+                }
+
+                &:hover a{
+                    color: #40a9ff;
+                }
             }
         }
 
-        .tag-list{
+        .tag-list {
             overflow: hidden;
-            
-            .ant-tag{
-                margin-bottom: 6px;
+            .ant-tag {
+              margin-bottom: 6px;
             }
-        }
-
+            a {
+              color: inherit;
+            }
+          }
     }
 
     .app-main{
@@ -239,9 +250,16 @@ ul,ol,li{
                             margin-right: 7px;
                         }
                     }
+
+                    &:hover{
+                        background: #effbff;
+                        box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.1);
+                        transform: translate3d(0, -5px 0);
+                    }
                 }
             }
 
+            // 快速导航
             .preview{
                 position: fixed;
                 width: 260px;
@@ -265,7 +283,15 @@ ul,ol,li{
                         color: #8590a6;
                         display: block;
                     }
+                    &:hover{
+                        background: #f0f2f5;
+                    }
+                    &:hover a{
+                        color: #40a9ff;
+                    }
                 }
+
+                
             }
 
             .app-pagination{
@@ -357,11 +383,10 @@ ul,ol,li{
                         color: red;;
                         vertical-align: middle;
                         cursor: pointer;
-                        _display: none;
                     }   
                     
                     &:hover .icon-delete{
-                        _display: block;
+
                     }
                 }
 
