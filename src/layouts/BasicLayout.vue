@@ -16,6 +16,9 @@ import HeaderNav from "@/components/Header/HeaderNav";
 import AppMain from "@/components/AppMain";
 export default {
   components: { HeaderNav,AppMain },
+  created(){
+    
+  }
 };
 </script>
 

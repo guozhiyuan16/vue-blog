@@ -24,15 +24,12 @@
               </a-button>
             </li>
           </ul>
-          <a-alert description="个人笔记网站，请访问alvin's note" />
+          <a-alert description="个人笔记网站" />
           <a-divider orientation="left"> 热门文章 </a-divider>
           <ul class="article-list">
-            <li><a href="/article/92">置顶文</a></li>
-            <li><a href="/article/90">用 node 写命令行工具</a></li>
-            <li><a href="/article/76">koa-react-ssr 学习</a></li>
-            <li><a href="/article/74">如何用 es6+ 写出优雅的 js 代码</a></li>
-            <li><a href="/article/30">实现简易的 VUE-MVVM</a></li>
-            <li><a href="/article/64">webpack - 入门篇</a></li>
+            <li><router-link to="/article/64" >webpack - 入门篇1</router-link></li>
+            <li><router-link to="/article/65" >webpack - 入门篇2</router-link></li>
+            <li><router-link to="/article/66" >webpack - 入门篇3</router-link></li>
           </ul>
           <a-divider orientation="left"> 标签 </a-divider>
           <div class="tag-list">

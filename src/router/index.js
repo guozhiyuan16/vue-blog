@@ -15,22 +15,22 @@ const routes = [
       {
         path:'',
         component: resolve => require(['@/views/home/home'],resolve),
-        // name:'home'
       },
       {
         path:'archives',
         component: resolve => require(['@/views/home/archives'],resolve),
-        // name:'archives'
       },
       {
         path:'categories',
         component: resolve => require(['@/views/home/categories'],resolve),
-        // name:'categories'
       },
       {
         path:'about',
         component: resolve => require(['@/views/home/about'],resolve),
-        // name:'about'
+      },
+      {
+        path:'article/:articleId',
+        component: resolve => require(['@/views/home/article'],resolve),
       }
     ]
   },
