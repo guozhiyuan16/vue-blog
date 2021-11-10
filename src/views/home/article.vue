@@ -112,7 +112,7 @@
             </a-menu-item>
           </a-menu>
         </a-dropdown>
-        <a-divider orientation></a-divider>
+        <a-divider></a-divider>
       </div>
       <a-comment>
         <a-avatar
