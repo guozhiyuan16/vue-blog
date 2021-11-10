@@ -13,7 +13,7 @@ import '@kangc/v-md-editor/lib/theme/style/vuepress.css';
 import Prism from 'prismjs';
 
 //ant-design-vue按需加载
-import { Button,spin, Calendar,Card,ConfigProvider,Layout,DatePicker,Dropdown,Form,FormModel,Icon,Input,InputNumber,message,Popconfirm,Menu,Modal,notification,Pagination,Select,Table,TreeSelect,Upload,Col,Row,Alert,Divider,Tag,Badge,Timeline,Avatar,Rate,Comment,List,Popover,Tooltip,Breadcrumb,Switch} from 'ant-design-vue';
+import { Button,spin, Calendar,Card,ConfigProvider,Layout,DatePicker,Dropdown,Form,FormModel,Icon,Input,InputNumber,message,Popconfirm,Menu,Modal,notification,Pagination,Select,Table,TreeSelect,Upload,Col,Row,Alert,Divider,Tag,Badge,Timeline,Avatar,Rate,Comment,List,Popover,Tooltip,Breadcrumb,Switch,Anchor} from 'ant-design-vue';
 Vue.use(Button);
 Vue.use(Calendar);
 Vue.use(spin);
@@ -53,6 +53,7 @@ Vue.use(Popover)
 Vue.use(Tooltip)
 Vue.use(Breadcrumb)
 Vue.use(Switch)
+Vue.use(Anchor)
 
 Vue.prototype.$message = message;
 Vue.prototype.$notification = notification;
