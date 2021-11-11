@@ -53,12 +53,26 @@
 </template>
 
 <script>
+import api from '@/api/api';
 export default {
   data() {
     return {};
   },
+  created() {
+    this.getAritcleList();
+    this.getTagList();
+  },
+  methods: {
+    getAritcleList() {
+      api.getAritcleList().then(res => {
+        console.log(res);
+      });
+    },
+    getTagList() {
+      api.getTagList().then(res => {
+        console.log(res);
+      });
+    }
+  }
 };
 </script>
-
-<style lang="less">
-</style>
