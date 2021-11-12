@@ -4,11 +4,12 @@ export const login = params => post('/login', params)
 export const register = params => post('/register',params)
 
 export const getArticleList = params => get('/api/article/list',params)
-export const getTagList = params => get('/api/tag/list')
+export const getTagList = params => get('/api/tag/list',params)
 
 export default {
     login,
     register,
+    
     getArticleList,
     getTagList
 }
