@@ -24,7 +24,9 @@
           <a-divider orientation="left"> 热门文章 </a-divider>
           <ul class="article-list">
             <li v-for="article in articles.rows" :key="article.id">
-              <router-link :to="`article/${article.id}`"> {{ article.title }}</router-link>
+              <router-link :to="`article/${article.id}`">
+                {{ article.title }}</router-link
+              >
             </li>
           </ul>
           <a-divider orientation="left"> 标签 </a-divider>
@@ -61,72 +63,8 @@ export default {
   methods: {
     getAritcleList() {
       this.articles = {
-        count: 8,
+        count: 11,
         rows: [
-          {
-            createdAt: "2021-10-18 13:46:40",
-            updatedAt: "2021-11-11 17:25:34",
-            id: 178,
-            title: "吃饭睡觉打豆豆",
-            content:
-              "吃饭睡觉打豆豆 吃饭睡觉打豆豆 吃饭睡觉打豆豆吃饭睡觉打豆豆吃饭睡觉打豆豆吃饭睡觉打豆豆吃饭睡觉打豆豆吃饭睡觉打豆豆吃饭睡觉打豆豆",
-            viewCount: 39,
-            tags: [{ name: "吃饭睡觉打豆豆" }],
-            categories: [{ name: "react" }],
-            comments: [
-              { id: 250, replies: [] },
-              { id: 251, replies: [] },
-              { id: 252, replies: [] },
-            ],
-          },
-          {
-            createdAt: "2021-10-15 14:57:11",
-            updatedAt: "2021-11-11 15:00:12",
-            id: 177,
-            title: "alifafa",
-            content:
-              "中国粉丝但是颠三倒四随时随地是的是\n> let a=110\n* > function(){\n> }\n> \n* sd sds ds sd sd \n**sdsds dsds \n*** dsds ds \n*** function(){}\n# 在src下创建配置文件：src/setupProxy.js",
-            viewCount: 33,
-            tags: [{ name: "react" }],
-            categories: [{ name: "react" }],
-            comments: [
-              { id: 255, replies: [] },
-              { id: 256, replies: [] },
-            ],
-          },
-          {
-            createdAt: "2021-10-13 15:53:39",
-            updatedAt: "2021-11-06 13:56:36",
-            id: 171,
-            title: "asdasd",
-            content: "sad",
-            viewCount: 9,
-            tags: [{ name: "react" }],
-            categories: [{ name: "react" }],
-            comments: [],
-          },
-          {
-            createdAt: "2021-10-13 15:33:27",
-            updatedAt: "2021-10-21 14:47:59",
-            id: 170,
-            title: "测试1",
-            content: "ccc",
-            viewCount: 16,
-            tags: [{ name: "JavaScript" }, { name: "Node" }],
-            categories: [{ name: "Koa" }, { name: "Node" }],
-            comments: [{ id: 249, replies: [] }],
-          },
-          {
-            createdAt: "2021-08-13 17:49:42",
-            updatedAt: "2021-11-11 21:37:23",
-            id: 169,
-            title: "风格化",
-            content: "规范化",
-            viewCount: 76,
-            tags: [{ name: "react" }, { name: "JavaScript" }],
-            categories: [{ name: "react" }],
-            comments: [{ id: 237, replies: [{ id: 132 }] }],
-          },
           {
             createdAt: "2021-08-08 15:59:54",
             updatedAt: "2021-11-12 16:20:08",
@@ -138,10 +76,6 @@ export default {
             tags: [{ name: "react" }],
             categories: [{ name: "react" }],
             comments: [
-              { id: 244, replies: [] },
-              { id: 245, replies: [] },
-              { id: 238, replies: [] },
-              { id: 246, replies: [] },
               { id: 239, replies: [] },
               { id: 247, replies: [] },
               { id: 240, replies: [] },
@@ -149,31 +83,77 @@ export default {
               { id: 241, replies: [] },
               { id: 242, replies: [] },
               { id: 243, replies: [] },
+              { id: 244, replies: [] },
+              { id: 245, replies: [] },
+              { id: 238, replies: [] },
+              { id: 246, replies: [] },
             ],
           },
           {
             createdAt: "2021-08-04 16:02:24",
-            updatedAt: "2021-11-11 16:34:59",
+            updatedAt: "2021-11-15 13:36:12",
             id: 167,
             title: "README",
             content:
               "## 1.求和案例_redux精简版\r\n\t\t(1).去除Count组件自身的状态\r\n\t\t(2).src下建立:\r\n\t\t\t\t\t\t-redux\r\n\t\t\t\t\t\t\t-store.js\r\n\t\t\t\t\t\t\t-count_reducer.js\r\n\r\n\t\t(3).store.js：\r\n\t\t\t\t\t1).引入redux中的createStore函数，创建一个store\r\n\t\t\t\t\t2).createStore调用时要传入一个为其服务的reducer\r\n\t\t\t\t\t3).记得暴露store对象\r\n\r\n\t\t(4).count_reducer.js：\r\n\t\t\t\t\t1).reducer的本质是一个函数，接收：preState,action，返回加工后的状态\r\n\t\t\t\t\t2).reducer有两个作用：初始化状态，加工状态\r\n\t\t\t\t\t3).reducer被第一次调用时，是store自动触发的，\r\n\t\t\t\t\t\t\t\t\t传递的preState是undefined,\r\n\t\t\t\t\t\t\t\t\t传递的action是:{type:'@@REDUX/INIT_a.2.b.4}\r\n\r\n\t\t(5).在index.js中监测store中状态的改变，一旦发生改变重新渲染<App/>\r\n\t\t\t\t备注：redux只负责管理状态，至于状态的改变驱动着页面的展示，要靠我们自己写。\r\n\r\n\r\n## 2.求和案例_redux完整版\r\n\t\t新增文件：\r\n\t\t\t1.count_action.js 专门用于创建action对象\r\n\t\t\t2.constant.js 放置容易写错的type值\r\n\r\n\r\n\r\n## 3.求和案例_redux异步action版\r\n\t\t (1).明确：延迟的动作不想交给组件自身，想交给action\r\n\t\t (2).何时需要异步action：想要对状态进行操作，但是具体的数据靠异步任务返回。\r\n\t\t (3).具体编码：\r\n\t\t \t\t\t1).yarn add redux-thunk，并配置在store中\r\n\t\t \t\t\t2).创建action的函数不再返回一般对象，而是一个函数，该函数中写异步任务。\r\n\t\t \t\t\t3).异步任务有结果后，分发一个同步的action去真正操作数据。\r\n\t\t (4).备注：异步action不是必须要写的，完全可以自己等待异步任务的结果了再去分发同步action。\r\n\r\n\r\n\r\n\r\n\r\n## 4.求",
-            viewCount: 106,
+            viewCount: 110,
             tags: [{ name: "react" }],
             categories: [{ name: "react" }],
             comments: [],
           },
           {
             createdAt: "2021-07-28 22:40:23",
-            updatedAt: "2021-11-06 21:54:31",
+            updatedAt: "2021-11-15 11:59:18",
             id: 165,
             title: "rollup基本配置",
             content:
               "```js\nimport babel from 'rollup-plugin-babel'\nimport serve from 'rollup-plugin-server'\nexport default {\n    input:\"./src/index.js\",\n    output:{\n        format:'umd', // 支持amd commonjs window.Vue\n        file:\"./dist/vue.js\",\n        name:\"Vue\",\n        sourcemap:true\n    },\n    plugins:[\n        babel({\n            exclude:'node_modules/**'\n        }),\n        serve({\n            open:true,\n            port:3000,\n            contentBase:'',\n            openPage:'/index.html'\n        })\n    ]\n}\n```",
-            viewCount: 96,
+            viewCount: 99,
             tags: [{ name: "Node" }],
             categories: [{ name: "Node" }],
             comments: [],
+          },
+          {
+            createdAt: "2021-08-13 17:49:42",
+            updatedAt: "2021-11-15 00:07:39",
+            id: 169,
+            title: "风格化",
+            content: "规范化",
+            viewCount: 80,
+            tags: [{ name: "react" }, { name: "JavaScript" }],
+            categories: [{ name: "react" }],
+            comments: [{ id: 237, replies: [{ id: 132 }] }],
+          },
+          {
+            createdAt: "2021-10-18 13:46:40",
+            updatedAt: "2021-11-15 13:36:06",
+            id: 178,
+            title: "吃饭睡觉打豆豆",
+            content:
+              "吃饭睡觉打豆豆 吃饭睡觉打豆豆 吃饭睡觉打豆豆吃饭睡觉打豆豆吃饭睡觉打豆豆吃饭睡觉打豆豆吃饭睡觉打豆豆吃饭睡觉打豆豆吃饭睡觉打豆豆",
+            viewCount: 47,
+            tags: [{ name: "吃饭睡觉打豆豆" }],
+            categories: [{ name: "react" }],
+            comments: [
+              { id: 250, replies: [] },
+              { id: 251, replies: [] },
+              { id: 252, replies: [] },
+            ],
+          },
+          {
+            createdAt: "2021-10-15 14:57:11",
+            updatedAt: "2021-11-13 17:27:42",
+            id: 177,
+            title: "alifafa",
+            content:
+              "中国粉丝但是颠三倒四随时随地是的是\n> let a=110\n* > function(){\n> }\n> \n* sd sds ds sd sd \n**sdsds dsds \n*** dsds ds \n*** function(){}\n# 在src下创建配置文件：src/setupProxy.js",
+            viewCount: 39,
+            tags: [{ name: "react" }],
+            categories: [{ name: "react" }],
+            comments: [
+              { id: 256, replies: [] },
+              { id: 255, replies: [] },
+            ],
           },
         ],
       };
