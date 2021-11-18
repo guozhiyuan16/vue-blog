@@ -4,10 +4,10 @@
       <template v-for="(article,index) in articles.rows">
         <li :key="index" class="app-home-list-item">
           <a-divider orientation="left">
-            <span class="title">{{ article.title }}</span>
+            <span @click="toArtDetail(article)" class="title">{{ article.title }}</span>
             <span class="posted-time">{{ article.createdAt.slice(0,10) }}</span>
           </a-divider>
-          <div class="article-detail content">
+          <div @click="toArtDetail(article)" class="article-detail content">
             <p>{{ article.content }}</p>
           </div>
           <div class="list-item-others">
@@ -198,6 +198,9 @@ export default {
         ],
       };
     },
+    toArtDetail(info){
+      this.$router.push(`/article/${info.id}`)
+    }
   },
 };
 </script>

@@ -1,9 +1,9 @@
 
 /**
- * @func 处理数据方便渲染
- * @param {*} arr 
- * @param {*} f 
- * @returns 
+ * @func 对数组进行分组
+ * @param {Array} arr 分组对象 
+ * @param {Function} f 
+ * @returns 数组分组后的新数组
  */
 export const groupBy = (arr,f) => {
     const groups = {};
