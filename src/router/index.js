@@ -25,6 +25,10 @@ const routes = [
         component: resolve => require(['@/views/home/categories'],resolve),
       },
       {
+        path:'categories/:type',
+        component: resolve => require(['@/views/home/archives'],resolve),
+      },
+      {
         path:'about',
         component: resolve => require(['@/views/home/about'],resolve),
       },

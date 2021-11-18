@@ -2,26 +2,32 @@
   <div class="app-archives">
     <a-timeline>
       <a-timeline-item>
-        <span class="desc">Nice! {{ articles.count }} posts in total. Keep on posting.</span>
+        <span class="desc">
+          Nice! {{ articles.count }} posts in total. Keep on posting.
+        </span>
         <br />
+        <br />  
       </a-timeline-item>
-      <a-timeline-item>Create a services site 2015-09-01</a-timeline-item>
-      <a-timeline-item
-        >Solve initial network problems 2015-09-01</a-timeline-item
-      >
-      <a-timeline-item color="red">
-        <a-icon slot="dot" type="clock-circle-o" style="font-size: 16px" />
-        <div class="year">2020...</div>
-        <br />
-      </a-timeline-item>
-      <a-timeline-item
-        >Network problems being solved 2015-09-01</a-timeline-item
-      >
+      <template v-for="(y, i) in articles.rows">
+        <a-timeline-item color="red" :key="i">
+          <a-icon slot="dot" type="clock-circle-o" style="font-size: 16px" />
+          <div class="year">{{ y[0]['createdAt'].slice(0,4) }}...</div>
+          <br />
+        </a-timeline-item>
+        <a-timeline-item v-for="(item, index) in y" :key="index">
+          <span :style="{ fontSize: '13px', marginRight: '16px' }">
+            {{ item.createdAt.slice(5, 10) }}
+          </span>
+          <router-link :to="`/article/${item.id}`">
+            {{ item.title }}
+          </router-link>
+        </a-timeline-item>
+      </template>
     </a-timeline>
   </div>
 </template>
 <script>
-import { groupBy } from '@/utils';
+import { groupBy } from "@/utils";
 export default {
   data() {
     return {
@@ -30,6 +36,7 @@ export default {
   },
   created() {
     this.getArticles();
+    console.log(this.$route.params.type);
   },
   methods: {
     getArticles() {
@@ -199,7 +206,9 @@ export default {
         ],
       };
       this.articles = data;
-      this.articles.rows = groupBy(data.rows, item => item.createdAt.slice(0,4))
+      this.articles.rows = groupBy(data.rows, (item) =>
+        item.createdAt.slice(0, 4)
+      );
     },
   },
 };

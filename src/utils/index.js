@@ -1,4 +1,10 @@
 
+/**
+ * @func 处理数据方便渲染
+ * @param {*} arr 
+ * @param {*} f 
+ * @returns 
+ */
 export const groupBy = (arr,f) => {
     const groups = {};
     arr.forEach( item => {
