@@ -58,15 +58,62 @@
   </a-comment>
 </template>
 <script>
+import moment from "moment";
 export default {
-  props: ["comment"],
+  props: ["info"],
   data() {
     return {
       comment: {},
+      submitting: false,
+      value: "",
+      moment,
+
+      isLogin: false, // 是否登录
+      role: 2, // 1 管理员 2 普通用户
+      replyBoxId: "", // 回复框对应的id
     };
   },
   created() {
-    this.comment = this.discuss.comment;
+    console.log(this.info);
+    this.comment = this.info;
+  },
+  methods: {
+    handleSubmit() {
+      if (!this.value) {
+        return;
+      }
+
+      this.submitting = true;
+
+      setTimeout(() => {
+        this.submitting = false;
+        this.comments = [
+          {
+            author: "Han Solo",
+            avatar:
+              "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+            content: this.value,
+            datetime: moment().fromNow(),
+          },
+          ...this.comments,
+        ];
+        this.value = "";
+      }, 1000);
+    },
+    handleChange(e) {
+      this.value = e.target.value;
+      console.log(this.value);
+    },
+    delDiscuss(id) {
+      console.log(`删除编号为${id}的留言`);
+    },
+    /**
+     * @func 点击ReplyTo展示对应的回复框
+     * @param {String} id 回复框的id
+     */
+    changeReplay(id) {
+      this.replyBoxId = id;
+    },
   },
 };
 </script>

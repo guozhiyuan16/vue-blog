@@ -63,7 +63,7 @@
             v-for="(anchor, index) in titles"
             :href="`#${anchor.title}`"
             :title="anchor.title"
-            :key="index"
+            :key="`anchor${index}`"
           >
           </a-anchor-link>
         </a-anchor>
