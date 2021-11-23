@@ -1,8 +1,8 @@
 <template>
   <div class="app-home">
     <ul class="app-home-list">
-      <template v-for="(article,index) in articles.rows">
-        <li :key="index" class="app-home-list-item">
+      <template v-for="article in articles.rows">
+        <li :key="`home${article.id}`" class="app-home-list-item">
           <a-divider orientation="left">
             <span @click="toArtDetail(article)" class="title">{{ article.title }}</span>
             <span class="posted-time">{{ article.createdAt.slice(0,10) }}</span>
@@ -19,13 +19,13 @@
             <template v-if="article.tags.length">
               <a-divider type="vertical" />
               <a-icon type="tags" theme="filled" />
-              <a-tag v-for="(tag,index) in article.tags" :key="index"> <a> {{ tag.name }} </a> </a-tag>
+              <a-tag v-for="tag in article.tags"><a> {{ tag.name }} </a></a-tag>
             </template>
             
             <template v-if="article.categories.length">
               <a-divider type="vertical" />
               <a-icon type="folder" />
-              <a-tag v-for="(category,index) in article.categories" :key="index"> <a> {{ category.name }} </a> </a-tag>
+              <a-tag v-for="category in article.categories"><a> {{ category.name }} </a></a-tag>
             </template>
           </div>
         </li>
@@ -33,8 +33,8 @@
     </ul>
     <ul class="preview">
       <a-divider orientation="center"> 快速导航 </a-divider>
-      <template v-for="(article,index) in articles.rows">
-          <li :key="index"><router-link :to="`/article/${article.id}`">{{ article.title}}</router-link></li>
+      <template v-for="article in articles.rows">
+          <li :key="article.id"><router-link :to="`/article/${article.id}`">{{ article.title}}</router-link></li>
       </template>
     </ul>
     <div class="app-pagination">

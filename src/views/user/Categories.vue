@@ -10,13 +10,8 @@
         :count="category.count"
         :key="index"
       >
-        <a-tag color="pink">
-          <router-link
-            :to="`/categories/${category.name}`"
-            class="head-example"
-          >
-            {{ category.name }}
-          </router-link>
+        <a-tag @click="linkTo(category.name)">
+          {{ category.name }}
         </a-tag>
       </a-badge>
     </div>
@@ -40,6 +35,9 @@ export default {
         { name: "Koa", count: 1 },
       ];
     },
+    linkTo(name){
+      this.$router.push(`/categories/${name}`)
+    }
   },
 };
 </script>

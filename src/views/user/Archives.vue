@@ -8,13 +8,13 @@
         <br />
         <br />  
       </a-timeline-item>
-      <template v-for="(y, i) in articles.rows">
-        <a-timeline-item color="red" :key="i">
+      <template v-for="y in articles.rows">
+        <a-timeline-item color="red" :key="y[0].id">
           <a-icon slot="dot" type="clock-circle-o" style="font-size: 16px" />
           <div class="year">{{ y[0]['createdAt'].slice(0,4) }}...</div>
           <br />
         </a-timeline-item>
-        <a-timeline-item v-for="(item, index) in y" :key="index">
+        <a-timeline-item v-for="item in y" :key="`archives${item.id}`">
           <span :style="{ fontSize: '13px', marginRight: '16px' }">
             {{ item.createdAt.slice(5, 10) }}
           </span>
@@ -43,17 +43,6 @@ export default {
       const data = {
         count: 11,
         rows: [
-          {
-            createdAt: "2020-11-14 14:39:48",
-            updatedAt: "2020-11-15 14:25:29",
-            id: 182,
-            title: "response.txt",
-            content: "OK",
-            viewCount: 1,
-            tags: [],
-            categories: [],
-            comments: [],
-          },
           {
             createdAt: "2021-11-14 14:39:48",
             updatedAt: "2021-11-15 14:25:29",
