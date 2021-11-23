@@ -62,6 +62,14 @@ const routes = [
   }
 ]
 
+// 入口文件
+// const files = require.context('./',false,/\.router.js/); // webpack语法，像前端的读写文件,返回的是一个方法，方法执行得到所有文件组成的数组
+// const routes = [];
+// files.keys().forEach(fileName => {
+//   // files(fileName) 返回当前模块
+//   routes.push(...files(fileName).default)
+// })
+
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
