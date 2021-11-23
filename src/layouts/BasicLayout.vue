@@ -1,6 +1,6 @@
 <template>
   <div :class="['basicLayout']">
-    <a-layout :style="{ minHeight: '100vh', width: '100%' }">
+    <a-layout :style="{ minHeight: '100vh', width: '100%' , minWidth: '960px' }">
       <a-layout-header>
         <header-nav></header-nav>
       </a-layout-header>

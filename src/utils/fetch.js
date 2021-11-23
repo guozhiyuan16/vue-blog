@@ -6,7 +6,7 @@ import {
 import store from '../store'
 import {
   API_BASE_URL
-} from '@/config'
+} from '@/config/index.js'
 // import { getToken } from '@/utils'
 
 const service = axios.create({

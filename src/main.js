@@ -13,47 +13,12 @@ import '@kangc/v-md-editor/lib/theme/style/vuepress.css';
 import Prism from 'prismjs';
 
 //ant-design-vue按需加载
-import { Button,spin, Calendar,Card,ConfigProvider,Layout,DatePicker,Dropdown,Form,FormModel,Icon,Input,InputNumber,message,Popconfirm,Menu,Modal,notification,Pagination,Select,Table,TreeSelect,Upload,Col,Row,Alert,Divider,Tag,Badge,Timeline,Avatar,Rate,Comment,List,Popover,Tooltip,Breadcrumb,Switch,Anchor} from 'ant-design-vue';
-Vue.use(Button);
-Vue.use(Calendar);
-Vue.use(spin);
-Vue.use(Card);
-Vue.use(DatePicker);
-Vue.use(Dropdown);
-Vue.use(Form);
-Vue.use(FormModel);
-Vue.use(Icon);
-Vue.use(Input);
-Vue.use(InputNumber);
-Vue.use(message);
-Vue.use(Menu);
-Vue.use(Modal);
-Vue.use(notification);
-Vue.use(Pagination);
-Vue.use(Select);
-Vue.use(Table);
-Vue.use(TreeSelect);
-Vue.use(Upload);
-Vue.use(Col);
-Vue.use(Row);
+import { Button,spin,Card,ConfigProvider,Layout,DatePicker,Dropdown,Form,FormModel,Icon,Input,InputNumber,message,Popconfirm,Menu,Modal,notification,Pagination,Select,Table,Upload,Col,Row,Alert,Divider,Tag,Badge,Timeline,Avatar,Rate,Comment,List,Popover,Tooltip,Breadcrumb,Switch,Anchor} from 'ant-design-vue';
+const components = { Button,spin,Card,ConfigProvider,Layout,DatePicker,Dropdown,Form,FormModel,Icon,Input,InputNumber,message,Popconfirm,Menu,Modal,notification,Pagination,Select,Table,Upload,Col,Row,Alert,Divider,Tag,Badge,Timeline,Avatar,Rate,Comment,List,Popover,Tooltip,Breadcrumb,Switch,Anchor }
 
-Vue.use(Layout);
-Vue.use(Popconfirm)
-Vue.use(ConfigProvider)
-Vue.use(Alert)
-Vue.use(Divider)
-Vue.use(Tag)
-Vue.use(Badge)
-Vue.use(Timeline)
-Vue.use(Avatar)
-Vue.use(Rate)
-Vue.use(Comment)
-Vue.use(List)
-Vue.use(Popover)
-Vue.use(Tooltip)
-Vue.use(Breadcrumb)
-Vue.use(Switch)
-Vue.use(Anchor)
+Object.values(components).forEach(component => {
+  Vue.use(component);
+})
 
 Vue.prototype.$message = message;
 Vue.prototype.$notification = notification;

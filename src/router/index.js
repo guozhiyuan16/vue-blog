@@ -14,27 +14,27 @@ const routes = [
     children: [
       {
         path:'',
-        component: resolve => require(['@/views/home/home'],resolve),
+        component: resolve => require(['@/views/user/Home'],resolve),
       },
       {
         path:'archives',
-        component: resolve => require(['@/views/home/archives'],resolve),
+        component: resolve => require(['@/views/user/Archives'],resolve),
       },
       {
         path:'categories',
-        component: resolve => require(['@/views/home/categories'],resolve),
+        component: resolve => require(['@/views/user/Categories'],resolve),
       },
       {
         path:'categories/:type',
-        component: resolve => require(['@/views/home/archives'],resolve),
+        component: resolve => require(['@/views/user/Archives'],resolve),
       },
       {
         path:'about',
-        component: resolve => require(['@/views/home/about'],resolve),
+        component: resolve => require(['@/views/user/About'],resolve),
       },
       {
         path:'article/:articleId',
-        component: resolve => require(['@/views/home/article'],resolve),
+        component: resolve => require(['@/views/user/Article'],resolve),
       }
     ]
   },
@@ -44,19 +44,19 @@ const routes = [
     children: [
       {
         path:'',
-        component: resolve => require(['@/views/admin/home'],resolve),
+        component: resolve => require(['@/views/admin/Home'],resolve),
       },
       {
         path:'article/manager',
-        component: resolve => require(['@/views/admin/manager'],resolve),
+        component: resolve => require(['@/views/admin/Manager'],resolve),
       },
       {
         path:'article/add',
-        component: resolve => require(['@/views/admin/add'],resolve),
+        component: resolve => require(['@/views/admin/Add'],resolve),
       },
       {
         path:'user',
-        component: resolve => require(['@/views/admin/user'],resolve),
+        component: resolve => require(['@/views/admin/User'],resolve),
       }
     ]
   }
