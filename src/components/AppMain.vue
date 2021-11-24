@@ -25,8 +25,8 @@
           <ul class="article-list">
             <li v-for="article in articles.rows" :key="article.id">
               <router-link :to="`article/${article.id}`">
-                {{ article.title }}</router-link
-              >
+                {{ article.title }}
+              </router-link>
             </li>
           </ul>
           <a-divider orientation="left"> 标签 </a-divider>

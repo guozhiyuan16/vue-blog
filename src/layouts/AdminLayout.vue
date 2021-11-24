@@ -1,7 +1,7 @@
 <template>
-  <a-layout class="admin-view">
+  <a-layout class="admin-container">
     <a-layout-header class="header admin-header">
-      <div class="header-title">博客后管</div>
+      <div class="header-title">Blog Manager</div>
       <a-dropdown class="header-dropdown">
         <a class="ant-dropdown-link" @click="e => e.preventDefault()">
           Hover me <a-icon type="down" />
@@ -16,7 +16,7 @@
         </a-menu>
       </a-dropdown>
     </a-layout-header>
-    <a-layout class="admin-body">
+    <a-layout class="admin-slider">
       <a-layout-sider width="200" style="background: #fff">
         <a-menu
           mode="inline"
@@ -41,7 +41,7 @@
           </a-menu-item>
         </a-menu>
       </a-layout-sider>
-      <a-layout style="padding: 0 24px 24px">
+      <a-layout class="admin-content-wrap">
         <a-breadcrumb v-show="breadcrumbVisible" :routes="routes" style="margin: 16px 0">
           <template slot="itemRender" slot-scope="{ route, params, routes, paths }">
             <span v-if="routes.indexOf(route) === routes.length - 1">
@@ -52,7 +52,6 @@
             </router-link>
           </template>
         </a-breadcrumb>
-        <br />
         <a-layout-content class="admin-content">
           <router-view />
         </a-layout-content>

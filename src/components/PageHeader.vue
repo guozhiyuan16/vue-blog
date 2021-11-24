@@ -136,8 +136,6 @@
 
 <script>
 // 选项校验规则
-
-
 export default {
   data() {
     return {
@@ -241,5 +239,6 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style scoped>
+
 </style>
