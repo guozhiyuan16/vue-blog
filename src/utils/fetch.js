@@ -5,12 +5,12 @@ import {
 } from 'ant-design-vue'
 import store from '../store'
 import {
-  API_BASE_URL
+  baseURL
 } from '@/config/index.js'
 // import { getToken } from '@/utils'
 
 const service = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: baseURL,
   timeout: 10000
 })
 

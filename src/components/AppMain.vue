@@ -169,8 +169,7 @@ export default {
         { name: "吃饭睡觉打豆豆", count: 1 },
       ];
       this.tags = this.tags.map((tag) => {
-        tag.color =
-          this.tagColor[Math.floor(Math.random() * this.tagColor.length)];
+        tag.color = this.tagColor[Math.floor(Math.random() * this.tagColor.length)];
         return tag;
       });
       // api.getTagList().then((res) => {
