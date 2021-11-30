@@ -1,12 +1,10 @@
 export default {
     state: {
-        root:"root"
+        root:"root",
     },
     mutations: {
     },
     actions: {
-    },
-    modules: {
     }
 }
 

@@ -16,4 +16,6 @@ files.keys().forEach(key => {
 
 const store = new Vuex.Store(rootModule)
 
+console.log('store.state', store.state)
+
 export default store

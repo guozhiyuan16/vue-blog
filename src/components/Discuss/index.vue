@@ -9,13 +9,13 @@
           <a-icon type="down" />
         </span>
         <a-menu slot="overlay">
-          <a-menu-item v-if="!isLogin">
+          <a-menu-item v-if="!login">
             <a href="javascript:;">登录</a>
           </a-menu-item>
-          <a-menu-item v-if="!isLogin">
+          <a-menu-item v-if="!login">
             <a href="javascript:;">注册</a>
           </a-menu-item>
-          <a-menu-item v-if="isLogin">
+          <a-menu-item v-if="login">
             <a href="javascript:;">注销</a>
           </a-menu-item>
         </a-menu>
@@ -24,7 +24,7 @@
     </div>
     <a-comment>
       <!-- 未登录展示默认样式 -->
-      <a-avatar v-if="!isLogin" slot="avatar" size="large" icon="user" />
+      <a-avatar v-if="!login" slot="avatar" size="large" icon="user" />
       <!-- 登录展示用户信息 -->
       <a-avatar slot="avatar" v-else>User</a-avatar>
 
@@ -49,32 +49,49 @@
       </div>
     </a-comment>
     <div class="discuss-list">
-      <discuss-item 
+      <discuss-item
         v-for="comment in list" 
-        :key="`test${comment.id}`" 
-        :info="comment"
-      />
+        :key="`${comment.id}`" 
+        :discuss="comment"
+        :replyId="replyId" 
+        @console_data="changeReplayId"
+        @del_reply="delReply"
+      >
+        <discuss-item 
+          v-for="item in comment.replies" 
+          :key="`${item.id}`"
+          :discuss="item"
+          :replyId="replyId" 
+          @console_data="changeReplayId" 
+          @del_reply="delReply"
+        >
+        </discuss-item>
+      </discuss-item>
     </div>
   </div>
 </template>
 <script>
-import moment from "moment";
+import { mapState } from 'vuex';
+import discussItem from './discussItem.vue';
+
 export default {
+  components: { discussItem },
   props: ["list"],
   data() {
     return {
       comments: [],
       submitting: false,
       value: "",
-      moment,
 
-      isLogin: false, // 是否登录
-      role: 2, // 1 管理员 2 普通用户
-      replyBoxId: "", // 回复框对应的id
+      replyId: "", // 回复框对应的id
     };
   },
-  monted() {
-    console.log(this.$route.params.articleId);
+  computed: mapState({
+    login: state => state.user.login,
+  }),
+  created() {
+    console.log('文章id',this.$route.params.articleId);
+    console.log('登录状态',this.$store.state.user.login);
   },
   methods: {
     handleSubmit() {
@@ -103,16 +120,18 @@ export default {
       this.value = e.target.value;
       console.log(this.value);
     },
-    delDiscuss(id) {
-      console.log(`删除编号为${id}的留言`);
-    },
     /**
      * @func 点击ReplyTo展示对应的回复框
      * @param {String} id 回复框的id
      */
-    changeReplay(id) {
-      this.replyBoxId = id;
+    changeReplayId(id) {
+      console.log('parent',id)
+      this.replyId = id;
     },
+    delReply(id){
+      console.log('del',id)
+
+    }
   },
 };
 </script>
