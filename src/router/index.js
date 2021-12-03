@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 // Layout
-import BasicLayout from '@/layouts/BasicLayout';
+import BasicLayout from '@/layouts/web/index.vue';
 import AdminLayout from '@/layouts/AdminLayout';
 
 Vue.use(VueRouter)

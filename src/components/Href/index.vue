@@ -1,9 +1,11 @@
 <template>
-    <a target="_black" rel='noreferrer noopener' href="url"></a>
+    <a target="_black" rel='noreferrer noopener' :href="linkUrl">
+        <slot></slot>
+    </a>
 </template>
 
 <script>
 export default {
-    props:['url']
+    props:['linkUrl'],
 }
 </script>
