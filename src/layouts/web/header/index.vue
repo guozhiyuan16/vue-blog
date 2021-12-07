@@ -5,55 +5,20 @@
         <Left />
       </a-col>
       <a-col :span="20">
-        <div id="search-box">
-          <a-icon type="search" />
-          <a-input
-            placeholder="搜索文章"
-            type="text"
-            :class="['search-input']"
-          />
-        </div>
-        <div id="page-operation">
-          <template v-if="isLogin">
-            <a-dropdown placement="bottomCenter">
-              <a-avatar icon="user" class="ant-dropdown-link" @click="e => e.preventDefault()" />
-              <a-menu slot="overlay">
-                <a-menu-item v-if="role==1">
-                  <a href="javascript:;" @click="upload">导入文章</a>
-                </a-menu-item>
-                <a-menu-item v-if="role==1">
-                  <a href="javascript:;" @click="manage">后台管理</a>
-                </a-menu-item>
-                <a-menu-item>
-                  <a href="javascript:;">退出登录</a>
-                </a-menu-item>
-              </a-menu>
-            </a-dropdown>
-          </template>
-          <template v-else>
-              <a-button size="small" type="primary" ghost :style="{ marginRight: '20px' }" @click="login">登录</a-button>
-              <a-button size="small" type="danger" ghost @click="register">注册</a-button>
-          </template>
-        </div>
-        <div id="page-menu">
-          <a-menu v-model="current" mode="horizontal">
-            <a-menu-item key="home" @click="showDetail('/')"> <a-icon type="home" />首页 </a-menu-item>
-            <a-menu-item key="archives" @click="showDetail('archives')"> <a-icon type="edit" />归档 </a-menu-item>
-            <a-menu-item key="categories" @click="showDetail('categories')"> <a-icon type="folder" />分类 </a-menu-item>
-            <a-menu-item key="about" @click="showDetail('about')"> <a-icon type="user" />关于 </a-menu-item>
-          </a-menu>
-        </div>
+        <Right />
       </a-col>
     </a-row>
     <template>
-      <a-modal
-        v-model="loginVisible"
-        :title="'login'"
-        :destoryOnClose= true
-        :footer= null
+      <modal
+        v-if="loginVisible"
+        ref="loginForm"
+        :rules="loginRules"
+        :modalTitle="`login`"
+        :type="`login`"
+        :selectOptions="selectOptions"
+        @console_data="parentEvent"
       >
          <a-form-model
-            ref="loginForm"
             :model="loginForm"
             :rules="loginRules"
             :label-col="labelCol"
@@ -68,9 +33,9 @@
               <a-button type="primary" block @click="onSubmit('login')">login</a-button>
               <a-button block icon="github" :style="{marginTop:'10px'}">github login</a-button>
           </a-form-model>
-      </a-modal>
+      </modal>
     </template>
-    <template>
+    <!-- <template>
       <a-modal
         v-model="registerVisible"
         :title="'register'"
@@ -127,24 +92,26 @@
           </p>
         </a-upload-dragger>
       </a-modal>
-    </template>
+    </template> -->
+    <modal
+    ></modal>
   </div>
 </template>
 
 <script>
-import Left from './left/index.vue'
+import Left from './left/index.vue';
+import Right from './right/index.vue';
+import { mapState } from 'vuex';
 export default {
   components: {
-    Left
+    Left,
+    Right
   },
   data() {
     return {
-      isLogin:true,
-      role:1,
-      current: ["home"],
       labelCol: { span: 6 },
       wrapperCol: { span: 18 },
-      loginVisible:false,
+      //loginVisible:false,
       loginForm:{
         username:'',
         password:''
@@ -153,7 +120,7 @@ export default {
         username: [{ required: true, message: 'Username is required' , trigger:'blur'}],
         password: [{ required: true, message: 'Password is required' , trigger:'blur'}]
       },
-
+      selectOptions: {},
       registerVisible:false,
       registerForm:{
         username:'',
@@ -190,15 +157,12 @@ export default {
       }
     };
   },
+  computed: mapState({
+    loginVisible: state => state.loginVisible,
+  }),
   methods: {
     showDetail(path){
       this.$router.push(path);
-    },
-    login() {
-      this.loginVisible = true;
-    },
-    register(){
-      this.registerVisible = true;
     },
     manage(){
       this.$router.push('/admin')
@@ -222,7 +186,6 @@ export default {
       this.$refs['loginForm'].resetFields();
       this.$refs['registerForm'].resetFields();
     },
-
     // 上传组件
     handleChange(info) {
       const status = info.file.status;
@@ -235,6 +198,9 @@ export default {
         this.$message.error(`${info.file.name} file upload failed.`);
       }
     },
+    parentEvent(form){
+      console.log('loginForm',form)
+    }
   },
 };
 </script>

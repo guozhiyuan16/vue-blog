@@ -60,12 +60,13 @@ Vuex 和 单纯的全局对象有以下两种不同
 - **你不能直接改变 store 中的状态。**改变 store 中的状态的唯一途径就是显式地提交 (commit) mutation。这样使得我们可以方便地跟踪每一个状态的变化，从而让我们能够实现一些工具帮助我们更好地了解我们的应用。
 
 
-
-
-
 ## QUESTION
 
 ### 如何在项目中使用SVG
 
 [在vue项目中优雅的使用Svg](https://juejin.cn/post/6844903697999200263)
-[]()
+[SVG在Vue中如何引入？如何做到懒人引入？](https://segmentfault.com/a/1190000022664906)
+[webpack.html添加一个新的-loader](https://cli.vuejs.org/zh/guide/webpack.html#%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84-loader)
+
+### requireContext.keys().map(requireContext)在批量导入时的作用
+[requireContext.keys().map(requireContext)在批量导入时的作用](https://blog.csdn.net/qq_21567385/article/details/107626075)

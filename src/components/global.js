@@ -16,7 +16,6 @@ requireComponent.keys().forEach(fileName => {
     const _fileName = fileName.split('/').pop().replace(/\.\w+$/, '');
     const componentName = _fileName.charAt(0).toUpperCase() + _fileName.slice(1)
     // 全局注册组件
-    console.log(componentName)
     Vue.component(
         componentName,
         // 如果这个组件选项是通过 `export default` 导出的，

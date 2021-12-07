@@ -37,7 +37,7 @@
 </template>
 <script>
 export default {
-    props:['modalTitle','rules','type'],
+    props:['modalTitle','rules','selectOptions','type'],
     data(){
         return {
             labelCol: { span: 6 },

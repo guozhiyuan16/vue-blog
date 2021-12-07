@@ -16,7 +16,7 @@
               <Href :linkUrl="githubUrl">github</Href>
             </li>
             <li>
-              <svg class="svg-icon homepage-icon" aria-hidden="true"><use xlink:href="#iconjuejin"></use></svg>
+              <SvgIcon :iconClass="`juejin`"/>
               <Href :linkUrl="juejinUrl">juejin</Href>
             </li>
           </ul>

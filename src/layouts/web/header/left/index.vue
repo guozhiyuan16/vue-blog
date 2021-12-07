@@ -1,6 +1,6 @@
 <template>
     <div id="page-title">
-        <SvgIcon :iconClass="svgName"></SvgIcon>
+        <SvgIcon :iconClass="`airport`"></SvgIcon>
         <span class="blog-name">{{ blogName }}</span>
     </div>
 </template>
@@ -12,7 +12,6 @@ export default {
     data(){
         return {
             blogName: HEADER_BLOG_NAME,
-            svgName : 'airport'
         }
     }
 }
