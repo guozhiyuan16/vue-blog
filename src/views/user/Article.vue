@@ -76,7 +76,7 @@
   </article>
 </template>
 <script>
-import Discuss from "@/components/Discuss/index.vue";
+import Discuss from "@/components/Discuss/Discuss.vue";
 export default {
   components: {
     Discuss,

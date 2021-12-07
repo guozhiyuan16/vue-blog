@@ -3,7 +3,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './components/global'; // 全局组件注册
-import '@/assets/index.less'
+import '@/assets/index.less';
+import '@/icons/index.js'; // svg 图标
 
 // vue markdown 编辑器
 import VueMarkdownEditor from '@kangc/v-md-editor';
