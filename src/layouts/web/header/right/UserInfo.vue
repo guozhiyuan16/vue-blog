@@ -9,10 +9,10 @@
         />
         <a-menu slot="overlay">
           <a-menu-item v-if="role == 1">
-            <a href="javascript:;" @click="upload">导入文章</a>
+            <a href="javascript:;" @click="handleUpload">导入文章</a>
           </a-menu-item>
           <a-menu-item v-if="role == 1">
-            <a href="javascript:;" @click="manage">后台管理</a>
+            <a href="javascript:;" @click="toManage">后台管理</a>
           </a-menu-item>
           <a-menu-item>
             <a href="javascript:;">退出登录</a>
@@ -26,18 +26,19 @@
         type="primary"
         ghost
         :style="{ marginRight: '20px' }"
-        @click="userLogin"
+        @click="handleLogin"
       >
         登录
       </a-button>
-      <a-button size="small" type="danger" ghost @click="register">
+      <a-button size="small" type="danger" ghost @click="handleRegister">
         注册
       </a-button>
     </template>
   </div>
 </template>
 <script>
-import { mapState } from "vuex";
+import * as types from '@/store/action-types';
+import { mapState,mapMutations } from "vuex";
 export default {
   data() {
     return {
@@ -49,13 +50,17 @@ export default {
     role: state => state.user.role, // 获取用户权限
   }),
   methods: {
-    userLogin() {
-      this.loginVisible = true;
+    ...mapMutations([types.LOGIN_VISIBLE_STATE,types.REGISTER_VISIBLE_STATE,types.UPLOAD_VISIBLE_STATE]),
+    handleLogin() {
+      this[types.LOGIN_VISIBLE_STATE](true);
     },
-    register() {
-      this.registerVisible = true;
+    handleRegister() {
+      this[types.REGISTER_VISIBLE_STATE](true);
     },
-    manage() {
+    handleUpload() {
+      this[types.UPLOAD_VISIBLE_STATE](true);
+    },
+    toManage() {
       this.$router.push("/admin");
     },
   },

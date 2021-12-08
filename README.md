@@ -70,3 +70,9 @@ Vuex 和 单纯的全局对象有以下两种不同
 
 ### requireContext.keys().map(requireContext)在批量导入时的作用
 [requireContext.keys().map(requireContext)在批量导入时的作用](https://blog.csdn.net/qq_21567385/article/details/107626075)
+
+### Computed property “XX” was assigned to but it has no setter
+
+- 搜索一番，了解 组件中v-model=“XXX”，而XXX是vuex state中的某个变量，html中 isAllChecked 是由v-model ，vuex中是单项流，v-model是vue中的双向绑定，但是在computed中只通过get获取参数值 没有set无法改变参数值，因此增加set的方法 ，并将v-model改成:value
+
+[Computed property “XX“ was assigned to but it has no setter](https://blog.csdn.net/qq_34250472/article/details/112765285)

@@ -3,7 +3,7 @@
         <a-modal
             v-model="visible"
             :title="modalTitle"
-            :destoryOnClose= true
+            :destroyOnClose= true
             :footer= null
         >
             <a-form-model
@@ -23,11 +23,11 @@
                         />
                     </a-form-model-item>
                 </template>
-                <template v-if="type=='login'">
+                <template slot="footer" v-if="type=='login'">
                     <a-button type="primary" block @click="onSubmit">login</a-button>
                     <a-button block icon="github" :style="{marginTop:'10px'}">github login</a-button>
                 </template>
-                <template v-else-if="type=='register'">
+                <template slot="footer" v-else-if="type=='register'">
                     <a-button type="primary" block @click="onSubmit">register</a-button>
                     <a-button block icon="github" :style="{marginTop:'10px'}">github login</a-button>
                 </template>
@@ -37,15 +37,19 @@
 </template>
 <script>
 export default {
-    props:['modalTitle','rules','selectOptions','type'],
+    props:['modalTitle','rules','selectOptions'],
     data(){
         return {
             labelCol: { span: 6 },
             wrapperCol: { span: 18 },
             visible: false,
             form:{},
-            options:''
+            options:'',
+            type:'login'
         }
+    },
+    created(){
+        console.log(this.modalTitle,this.rules,this.selectOptions)  
     },
     methods:{
         showModal(options){
