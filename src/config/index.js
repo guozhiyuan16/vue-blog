@@ -1,3 +1,5 @@
+import avatar from '@/assets/images/avatar.jpeg'; // 后面如何修改为配置文件引入
+
 export default {
     // 开发打包默认的两个环境
     baseURL : process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : '/',
@@ -9,7 +11,7 @@ export default {
 export const HEADER_BLOG_NAME = '郭大大的博客' // header title 显示的名字
 
 export const SIDEBAR = {
-    // avatar : require('../assets/images/avatar.jpg'),
+    avatar, // 头像
     title: '郭大大',
     subTitle: '学而知不足',
     homePages: {
@@ -21,4 +23,12 @@ export const SIDEBAR = {
         }
     }
 }
-console.log(process.env.NODE_ENV)
+
+// === discuss avatar
+export const DISCUSS_AVATAR = SIDEBAR.avatar // 评论框博主头像
+
+// 公告 announcement
+export const ANNOUNCEMENT = {
+    enable: true, // 是否开启
+    content: ""
+}

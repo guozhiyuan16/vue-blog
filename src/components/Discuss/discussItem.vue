@@ -37,7 +37,7 @@
           <div>
             <a-avatar
               src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-              alt="Han Solo"
+              
             />
             <span>后续再添加</span>
           </div>
@@ -45,8 +45,7 @@
         <!-- 管理员 -->
         <a-avatar
           v-if="role == 1"
-          src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-          alt="Han Solo"
+          :src="avatar"
         />
         <!-- 普通用户 -->
         <a-avatar v-else>{{ discuss.user.username }}</a-avatar>
@@ -74,12 +73,14 @@
 <script>
 import moment from "moment";
 import { mapState } from "vuex";
+import { DISCUSS_AVATAR } from "@/config/index.js";
 
 export default {
   props: ['discuss','replyId'],
   data() {
     return {
       moment,
+      avatar: DISCUSS_AVATAR,
 
       hoverIndex: -1, // 控制删除按钮展示
     };
