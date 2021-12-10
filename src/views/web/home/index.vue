@@ -52,7 +52,7 @@
       <a-divider orientation="center"> 快速导航 </a-divider>
       <template v-for="article in articles.rows">
           <li :key="article.id">
-            <router-link :to="`${article.id}`">{{ article.title}}</router-link>
+            <router-link :to="`/article/${article.id}`">{{ article.title}}</router-link>
           </li>
       </template>
     </ul>

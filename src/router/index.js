@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 
 // Layout
 import BasicLayout from '@/layouts/web/index.vue';
-import AdminLayout from '@/layouts/AdminLayout';
+import AdminLayout from '@/layouts/admin/index.vue';
 
 Vue.use(VueRouter)
 
@@ -14,27 +14,27 @@ const routes = [
     children: [
       {
         path:'',
-        component: resolve => require(['@/views/user/home/index.vue'],resolve),
+        component: resolve => require(['@/views/web/home/index.vue'],resolve),
       },
       {
         path:'archives',
-        component: resolve => require(['@/views/user/archives/index.vue'],resolve),
+        component: resolve => require(['@/views/web/archives/index.vue'],resolve),
       },
       {
         path:'categories',
-        component: resolve => require(['@/views/user/categories/index.vue'],resolve),
+        component: resolve => require(['@/views/web/categories/index.vue'],resolve),
       },
       {
         path:'categories/:type',
-        component: resolve => require(['@/views/user/archives/index.vue'],resolve),
+        component: resolve => require(['@/views/web/archives/index.vue'],resolve),
       },
       {
         path:'about',
-        component: resolve => require(['@/views/user/about/index.vue'],resolve),
+        component: resolve => require(['@/views/web/about/index.vue'],resolve),
       },
       {
         path:'article/:articleId',
-        component: resolve => require(['@/views/user/article/index.vue'],resolve),
+        component: resolve => require(['@/views/web/article/index.vue'],resolve),
       }
     ]
   },
@@ -44,19 +44,19 @@ const routes = [
     children: [
       {
         path:'',
-        component: resolve => require(['@/views/admin/Home'],resolve),
+        component: resolve => require(['@/views/admin/home/index.vue'],resolve),
       },
       {
         path:'article/manager',
-        component: resolve => require(['@/views/admin/Manager'],resolve),
+        component: resolve => require(['@/views/admin/article/manager/index.vue'],resolve),
       },
       {
         path:'article/add',
-        component: resolve => require(['@/views/admin/Add'],resolve),
+        component: resolve => require(['@/views/admin/article/edit/index.vue'],resolve),
       },
       {
         path:'user',
-        component: resolve => require(['@/views/admin/User'],resolve),
+        component: resolve => require(['@/views/admin/user/index.vue'],resolve),
       }
     ]
   }
