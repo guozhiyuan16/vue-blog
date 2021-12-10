@@ -6,9 +6,9 @@
     </p>
     <div class="categories-list">
       <a-badge
-        v-for="(category, index) in categories"
+        v-for="category in categories"
         :count="category.count"
-        :key="index"
+        :key="category.name"
       >
         <a-tag @click="linkTo(category.name)">
           {{ category.name }}
@@ -18,6 +18,7 @@
   </div>
 </template>
 <script>
+import { getCategory } from '@/api/article'
 export default {
   data() {
     return {
@@ -25,10 +26,11 @@ export default {
     };
   },
   created() {
-    this.getCategories();
+    this.getCategory();
   },
   methods: {
-    getCategories() {
+    async getCategory() {
+      // const data =  await getCategory(); 获取分类列表
       this.categories = [
         { name: "react", count: 7 },
         { name: "Node", count: 2 },

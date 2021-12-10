@@ -430,7 +430,6 @@ export default {
      * @func 页面锚点跳转
      */
     handleAnchorClick(anchor) {
-      console.log("click");
       const { preview } = this.$refs;
       const { lineIndex } = anchor;
 
