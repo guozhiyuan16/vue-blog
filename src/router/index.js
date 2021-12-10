@@ -14,27 +14,27 @@ const routes = [
     children: [
       {
         path:'',
-        component: resolve => require(['@/views/user/Home'],resolve),
+        component: resolve => require(['@/views/user/home/index.vue'],resolve),
       },
       {
         path:'archives',
-        component: resolve => require(['@/views/user/Archives'],resolve),
+        component: resolve => require(['@/views/user/archives/index.vue'],resolve),
       },
       {
         path:'categories',
-        component: resolve => require(['@/views/user/Categories'],resolve),
+        component: resolve => require(['@/views/user/categories/index.vue'],resolve),
       },
       {
         path:'categories/:type',
-        component: resolve => require(['@/views/user/Archives'],resolve),
+        component: resolve => require(['@/views/user/archives/index.vue'],resolve),
       },
       {
         path:'about',
-        component: resolve => require(['@/views/user/About'],resolve),
+        component: resolve => require(['@/views/user/about/index.vue'],resolve),
       },
       {
         path:'article/:articleId',
-        component: resolve => require(['@/views/user/Article'],resolve),
+        component: resolve => require(['@/views/user/article/index.vue'],resolve),
       }
     ]
   },
