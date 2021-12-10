@@ -53,10 +53,16 @@ export default {
   },
   methods: {
     // 注意命名空间
-    ...mapActions('article',[ types.SET_ARTICLE])
+    ...mapActions('article',[ types.SET_ARTICLE , types.SET_TAG ]),
   },
   mounted(){
-    // this[types.SET_ARTICLE]({page:1,limit:5});
+    // 做缓存
+    if(this.articles.rows.length === 0){
+      this[types.SET_ARTICLE]({page:1,limit:5});
+    }
+    if(this.tags.length === 0){
+      this[types.SET_TAG]();
+    }
   }
 };
 </script>
