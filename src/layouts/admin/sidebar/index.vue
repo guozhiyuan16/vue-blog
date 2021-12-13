@@ -1,37 +1,75 @@
 <template>
-    <a-menu
-        mode="inline"
-        :default-selected-keys="['1']"
-        :default-open-keys="['sub1']"
-        :style="{ height: '100%', borderRight: 0 }"
-    >
-        <a-menu-item key="sub1" @click="showDetail('/admin')"
-        ><a-icon type="home" />首页
-        </a-menu-item>
-        <a-sub-menu key="sub2">
-        <span slot="title"><a-icon type="highlight" />文章</span>
-        <a-menu-item key="5" @click="showDetail('/admin/article/manager')">
-            <a-icon type="folder" />
-            管理
-        </a-menu-item>
-        <a-menu-item key="6" @click="showDetail('/admin/article/add')">
-            <a-icon type="edit" />
-            新增
-        </a-menu-item>
+  <a-menu
+    mode="inline"
+    :default-open-keys="[openKey]"
+    :selected-keys="[current]"
+    :style="{ height: '100%', borderRight: 0 }"
+  >
+    <template v-for="menu in menuList">
+      <template v-if="menu.children">
+        <a-sub-menu :key="menu.path">
+          <span slot="title">
+            <a-icon :type="menu.icon" />{{ menu.name }}
+          </span>
+          <a-menu-item
+            v-for="m in menu.children"
+            :key="m.path"
+            @click="showDetail(m.path)"
+          >
+            <a-icon :type="m.icon" />{{ m.name }}
+          </a-menu-item>
         </a-sub-menu>
-        <a-menu-item key="sub3" @click="showDetail('/admin/user')">
-        <a-icon type="user" />用户
+      </template>
+      <template v-else>
+        <a-menu-item :key="menu.path" @click="showDetail(menu.path)">
+          <a-icon :type="menu.icon" />{{ menu.name }}
         </a-menu-item>
-    </a-menu>
+      </template>
+    </template>
+  </a-menu>
 </template>
 
 <script>
-export default {
-    methods: {
-        showDetail(path) {
-            this.breadcrumbVisible = path == "/admin" ? false : true;
-            this.$router.push(path);
-        },
+import menuList from "./menu";
+
+// 获取所有存在子元素的菜单
+function getMenuOpenKeys(menu) {
+  const list = [];
+  menu.forEach((item) => {
+    if (item.children) {
+      item.children.forEach((child) => {
+        list.push({
+          pathname: child.path,
+          openKey: item.path,
+        });
+      });
     }
+  });
+  return list;
 }
+
+const menuMenuOpenKeys = getMenuOpenKeys(menuList);
+
+export default {
+  data() {
+    return {
+      current: "/admin",
+      openKey: "",
+      menuList,
+    };
+  },
+  created() {
+    this.current = this.$route.path;
+    const target = menuMenuOpenKeys.find(
+      (item) => item.pathname === this.current
+    );
+    this.openKey = target ? target.openKey : "";
+  },
+  methods: {
+    showDetail(path) {
+      this.$router.push(path);
+      this.current = path;
+    },
+  },
+};
 </script>
