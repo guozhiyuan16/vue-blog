@@ -1,6 +1,6 @@
 import axios from 'axios';
 import config from '@/config';
-
+import { message } from 'ant-design-vue'
 // 每次请求通过axios.create()方法创建axios实例并增添拦截器功能;在此之上我们也再次封装get方法和post方法
 class HttpRequest {
     constructor() {
@@ -32,8 +32,21 @@ class HttpRequest {
             },
             err => {
                 // 单独处理其他的状态码异常
-                console.log(err);
-                return Promise.reject(res);
+                if(err.response){
+                    const { status,data } = err.response
+                    switch(status){
+                        case 401:
+                            message.error((data && data.message) || '登录信息过期或未授权，请重新登录！');
+                            break;
+
+                        default: 
+                            message.error(data.message || `链接错误 ${status}`);
+                            break;
+                    }
+                }else{
+                    message.error(err.message);
+                }
+                return Promise.reject(err);
             }
         )
     }

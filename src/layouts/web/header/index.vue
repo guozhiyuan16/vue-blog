@@ -29,12 +29,12 @@
           <a-form-model-item label="密码" prop="password">
             <a-input v-model="loginForm.password" placeholder="请输入密码" />
           </a-form-model-item>
-          <a-button type="primary" block @click="onSubmit('login')"
-            >login</a-button
-          >
-          <a-button block icon="github" :style="{ marginTop: '10px' }"
-            >github login</a-button
-          >
+          <a-button type="primary" block @click="handleLogin('login')">
+            login
+          </a-button>
+          <a-button block icon="github" :style="{ marginTop: '10px' }">
+            github login
+          </a-button>
         </a-form-model>
       </a-modal>
     </template>
@@ -54,10 +54,7 @@
           :wrapper-col="wrapperCol"
         >
           <a-form-model-item label="用户名" prop="username">
-            <a-input
-              v-model="registerForm.username"
-              placeholder="请输入用户名"
-            />
+            <a-input v-model="registerForm.username" placeholder="请输入用户名" />
           </a-form-model-item>
           <a-form-model-item label="密码" prop="password">
             <a-input v-model="registerForm.password" placeholder="请输入密码" />
@@ -68,12 +65,12 @@
           <a-form-model-item label="邮箱" prop="email">
             <a-input v-model="registerForm.email" placeholder="请输入邮箱" />
           </a-form-model-item>
-          <a-button type="primary" block @click="onSubmit('register')"
-            >register</a-button
-          >
-          <a-button block icon="github" :style="{ marginTop: '10px' }"
-            >github login</a-button
-          >
+          <a-button type="primary" block @click="handleReg('register')">
+            register
+          </a-button>
+          <a-button block icon="github" :style="{ marginTop: '10px' }">
+            github login
+          </a-button>
         </a-form-model>
       </a-modal>
     </template>
@@ -111,8 +108,8 @@
 <script>
 import Left from "./left/index.vue";
 import Right from "./right/index.vue";
-import { mapState, mapMutations } from "vuex";
-import * as types from "@/store/action-types";
+import { mapState, mapMutations, mapActions } from "vuex";
+import * as types from '@/store/action-types';
 export default {
   components: {
     Left,
@@ -186,18 +183,29 @@ export default {
   }),
   methods: {
     ...mapMutations([types.LOGIN_VISIBLE_STATE,types.REGISTER_VISIBLE_STATE,types.UPLOAD_VISIBLE_STATE]),
-    onSubmit(type) {
-      let formName = type === "login" ? "loginForm" : "registerForm";
-      this.$refs[formName].validate((valid) => {
+    ...mapActions('user',[types.USER_LOGIN,types.USER_REGISTER]),
+    // 登录
+    handleLogin(){
+      this.$refs['loginForm'].validate(async (valid) => {
         if (valid) {
-          console.log(this[formName]);
+          this[types.USER_LOGIN](this.loginForm)
         } else {
-          console.log("error submit!!");
           return false;
         }
       });
     },
-    handleCancel(e) {
+    // 注册
+    handleReg(){
+      this.$refs['registerForm'].validate(async (valid) => {
+        if (valid) {
+          this[types.USER_REGISTER](this.registerForm);
+          this.handleCancel();
+        } else {
+          return false;
+        }
+      });
+    },
+    handleCancel() {
       this[types.LOGIN_VISIBLE_STATE](false);
       this[types.REGISTER_VISIBLE_STATE](false);
       this[types.UPLOAD_VISIBLE_STATE](false);

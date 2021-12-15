@@ -12,7 +12,7 @@ export const HEADER_BLOG_NAME = '郭大大的博客' // header title 显示的�
 
 export const SIDEBAR = {
     avatar, // 头像
-    title: '郭大大',
+    title: '时间再走',
     subTitle: '学而知不足',
     homePages: {
         github : {

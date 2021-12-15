@@ -6,9 +6,9 @@
   >
     <template slot="itemRender" slot-scope="{ route, params, routes, paths }">
       <span v-if="routes.indexOf(route) === routes.length - 1">
-        {{ route.breadcrumbName }}
+        {{ route.breadcrumbName }} 
       </span>
-      <router-link v-else :to="`${basePath}/${paths.join('/')}`">
+      <router-link v-else :to="`${paths.join('/')}`">
         {{ route.breadcrumbName }}
       </router-link>
     </template>
@@ -19,27 +19,35 @@
 export default {
   data() {
     return {
-      basePath: "/admin",
+      basePath: "",
       routes: [
         {
-          path: "",
+          path: "/admin",
           breadcrumbName: "首页",
         },
         {
-          path: "article/manager",
+          path: "/admin/article/manager",
           breadcrumbName: "文章管理",
         },
         {
-          path: "article/add",
-          breadcrumbName: "文章新增",
+          path: "/admin/article/add",
+          breadcrumbName: "新增文章",
         },
         {
-          path: "user",
+          path: "/admin/user",
           breadcrumbName: "用户管理",
         },
       ],
       breadcrumbVisible: true,
     };
   },
+  created(){
+    this.breadcrumbVisible = this.$route.path === "/admin" ? false : true;
+  },
+  watch: {
+    $route(to, from){
+      this.breadcrumbVisible = to.path === '/admin' ? false : true;
+    }
+  }
 };
 </script>
