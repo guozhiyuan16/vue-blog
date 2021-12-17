@@ -1,6 +1,22 @@
 <template>
   <div id="page-operation">
-    <template v-if="hasPermission">
+
+   <template v-if="!hasPermission">
+      <a-button
+        size="small"
+        type="primary"
+        ghost
+        :style="{ marginRight: '20px' }"
+        @click="handleClick('loginVisible')"
+      >
+        登录
+      </a-button>
+      <a-button size="small" type="danger" ghost @click="handleClick('registerVisible')">
+        注册
+      </a-button>
+    </template>
+
+    <template v-else>
       <a-dropdown placement="bottomCenter">
         <a-avatar icon="user" class="ant-dropdown-link" @click=" e => e.preventDefault() "/>
 
@@ -17,20 +33,8 @@
         </a-menu>
       </a-dropdown>
     </template>
-    <template v-else>
-      <a-button
-        size="small"
-        type="primary"
-        ghost
-        :style="{ marginRight: '20px' }"
-        @click="handleClick('loginVisible')"
-      >
-        登录
-      </a-button>
-      <a-button size="small" type="danger" ghost @click="handleClick('registerVisible')">
-        注册
-      </a-button>
-    </template>
+    
+    <!-- 登录modal -->
     <template>
       <a-modal
         :visible="loginVisible"
@@ -61,6 +65,7 @@
         </a-form-model>
       </a-modal>
     </template>
+    <!-- 注册modal -->
     <template>
       <a-modal
         :visible="registerVisible"
@@ -100,6 +105,7 @@
         </a-form-model>
       </a-modal>
     </template>
+    <!-- 上传modal -->
     <template>
       <a-modal
         :visible="uploadVisible"
@@ -203,17 +209,23 @@ export default {
   methods: {
     ...mapMutations([types.USER_LOGIN_OUT]),
     ...mapActions([types.USER_LOGIN,types.USER_REGISTER]),
+    // 展示modal
     handleClick(type){
       this[type] = true;
     },
+    // 跳转后台管理
     toManage() {
       this.$router.push("/admin");
     },
-     // 登录
+    // 登录
     handleLogin() {
       this.$refs["loginForm"].validate(async (valid) => {
         if (valid) {
           this[types.USER_LOGIN](this.loginForm);
+          this.$nextTick(() => {
+            this.$message.success("登录成功");
+            this.loginVisible = false;
+          });
         } else {
           return false;
         }
@@ -224,14 +236,20 @@ export default {
       this.$refs["registerForm"].validate(async (valid) => {
         if (valid) {
           this[types.USER_REGISTER](this.registerForm);
+           this.$nextTick(() => {
+            this.$message.success('注册成功，请重新登录您的账号！');
+            this.registerVisible = false;
+          });
         } else {
           return false;
         }
       });
     },
+    // 退出登录
     loginOut() {
       this[types.USER_LOGIN_OUT]();
     },
+    // 关闭modal
     handleCancel(type) {
       this[type] = false;
     },

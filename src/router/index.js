@@ -1,5 +1,6 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import hooks from './hooks';
 
 // Layout
 import BasicLayout from '@/layouts/web/index.vue';
@@ -74,6 +75,10 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+Object.values(hooks).forEach(hook => {
+  router.beforeEach(hook.bind(router)); // 将this绑定成router
 })
 
 export default router

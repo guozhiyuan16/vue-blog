@@ -1,6 +1,7 @@
 import axios from 'axios';
 import config from '@/config';
-import { message } from 'ant-design-vue'
+import { message } from 'ant-design-vue';
+import { get } from '@/utils/local';
 // 每次请求通过axios.create()方法创建axios实例并增添拦截器功能;在此之上我们也再次封装get方法和post方法
 class HttpRequest {
     constructor() {
@@ -17,7 +18,8 @@ class HttpRequest {
     setInterceptor(instance) {
         instance.interceptors.request.use(
             config => {
-                // 可以增加 token 属性等
+                // 增加 token 属性 
+                config.headers.Authorization = `Bearer ${ get('token') }`;
                 return config;
             })
         instance.interceptors.response.use(

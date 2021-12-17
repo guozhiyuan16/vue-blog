@@ -1,6 +1,6 @@
 import * as types from '../action-types';
 import * as user from '@/api/user';
-// import { set } from '@/utils/local';
+import { save ,get ,remove } from '@/utils/local';
 import { message } from 'ant-design-vue';
 
 export default {
@@ -11,9 +11,11 @@ export default {
     mutations: {
         [types.SET_USER]( state, payload ){
             state.userInfo = payload;
-            // if( userInfo && userInfo.token ){
-            //     set('token',userInfo.token)
-            // }
+            if( payload && payload.token ){
+                save('token',payload.token)
+            }else{
+                remove('token');
+            }
         },
         [types.SER_PERMISSION]( state, has ){
             state.hasPermission = has;
@@ -26,13 +28,25 @@ export default {
     actions: {
         async [types.USER_REGISTER]({ dispatch },userInfo){
             await user.register(userInfo);
-            message.success('注册成功，请重新登录您的账号！')
         },
         async [types.USER_LOGIN]({commit}, payload) { 
             
             let result = await user.login(payload);
             commit(types.SET_USER, result );
             commit(types.SER_PERMISSION, true );
+        },
+        async [types.USER_VALIDATE]({commit}){
+            if(!get(token)) return false;
+            try{
+                let result = await user.login(payload);
+                commit(types.SET_USER, result );
+                commit(types.SER_PERMISSION, true );
+                return true;
+            }catch(e){
+                commit(types.SET_USER, {} );
+                commit(types.SER_PERMISSION, false );
+                return false;
+            }   
         }
     }
 }
